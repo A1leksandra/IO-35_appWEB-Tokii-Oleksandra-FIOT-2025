@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Звіти з практичних робіт</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .top-bar {
+            background-color: #6B46C1;
+            height: 4px;
+            width: 100%;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #6B46C1;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 40px;
+        }
+
+        .student-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .student-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .student-details {
+            flex: 1;
+        }
+
+        .student-details h2 {
+            color: #6B46C1;
+            margin-bottom: 0.5rem;
+        }
+
+        .student-details p {
+            color: #666;
+            margin: 0.5rem 0;
+        }
+
+        .labs-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .labs-section h2 {
+            color: #6B46C1;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .labs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .lab-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+
+        .lab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(107, 70, 193, 0.2);
+            border-color: #6B46C1;
+        }
+
+        .lab-card h3 {
+            color: #6B46C1;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .lab-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .content-section h2 {
+            color: #6B46C1;
+            margin-bottom: 1rem;
+        }
+
+        .content-section ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .content-section ul li {
+            margin: 0.8rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .content-section ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #6B46C1;
+            font-weight: bold;
+        }
+
+        .content-section ul li a {
+            color: #6B46C1;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .content-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: #6B46C1;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(107, 70, 193, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar"></div>
+    
+    <header>
+        <h1>ЗВІТИ З ПРАКТИЧНИХ РОБІТ</h1>
+        <p class="subtitle">З ДИСЦИПЛІНИ «WEB-ОРІЄНТОВАНІ ТЕХНОЛОГІЇ. FRONTEND РОЗРОБКИ»</p>
+    </header>
+
+    <div class="container">
+        <div class="student-info">
+            <div class="student-photo">АТ</div>
+            <div class="student-details">
+                <h2>Виконавець: Студент групи IO-35 — Токій Олександра</h2>
+                <p><strong>Дисципліна:</strong> WEB-ОРІЄНТОВАНІ ТЕХНОЛОГІЇ. FRONTEND РОЗРОБКИ</p>
+                <p><strong>Рік:</strong> 2025</p>
+            </div>
+        </div>
+
+        <div class="labs-section">
+            <h2>Звіти</h2>
+            <div class="labs-grid">
+                <a href="lab1_report.html" class="lab-card">
+                    <h3>Звіт №1</h3>
+                    <p>Звіт з лабораторної роботи №1</p>
+                </a>
+                <div class="lab-card" style="opacity: 0.6; cursor: not-allowed;">
+                    <h3>Звіт №2</h3>
+                    <p>В очікуванні</p>
+                </div>
+                <div class="lab-card" style="opacity: 0.6; cursor: not-allowed;">
+                    <h3>Звіт №3</h3>
+                    <p>В очікуванні</p>
+                </div>
+                <div class="lab-card" style="opacity: 0.6; cursor: not-allowed;">
+                    <h3>Звіт №4</h3>
+                    <p>В очікуванні</p>
+                </div>
+                <div class="lab-card" style="opacity: 0.6; cursor: not-allowed;">
+                    <h3>Звіт №5</h3>
+                    <p>В очікуванні</p>
+                </div>
+                <div class="lab-card" style="opacity: 0.6; cursor: not-allowed;">
+                    <h3>Звіт №6</h3>
+                    <p>В очікуванні</p>
+                </div>
+                <div class="lab-card" style="opacity: 0.6; cursor: not-allowed;">
+                    <h3>Звіт №7</h3>
+                    <p>В очікуванні</p>
+                </div>
+                <div class="lab-card" style="opacity: 0.6; cursor: not-allowed;">
+                    <h3>Звіт №8</h3>
+                    <p>В очікуванні</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Зміст</h2>
+            <ul>
+                <li><a href="lab1_report.html">Звіт з лабораторної роботи №1</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 WEB-застосунок. Всі права захищені.</p>
+    </footer>
+</body>
+</html>
+
