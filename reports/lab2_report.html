@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Звіт з лабораторної роботи №2</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="top-bar"></div>
+    
+    <header>
+        <h1>Звіт з лабораторної роботи №2</h1>
+        <p class="subtitle">Каскадні таблиці стилів. Селектори CSS</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>1. Селектори тегів</h2>
+            
+            <h3>1.1. HTML-код</h3>
+            <div class="code-block">
+                <code>
+&lt;h1&gt;Одяг на &lt;span class="highlight"&gt;іншому рівні&lt;/span&gt; деталей&lt;/h1&gt;<br>
+&lt;h2&gt;біля ваших дверей&lt;/h2&gt;<br>
+&lt;p&gt;Ви успішно зареєструвалися в нашому додатку&lt;/p&gt;<br>
+&lt;button class="btn-primary"&gt;Почати покупки&lt;/button&gt;
+                </code>
+            </div>
+
+            <h3>1.2. CSS-код</h3>
+            <div class="code-block">
+                <code>
+.hero h1 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 48px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-weight: bold;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin-bottom: 20px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #333;<br>
+}<br><br>
+.hero h1 .highlight {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #6B46C1;<br>
+}<br><br>
+.hero h2 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 32px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #666;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin-bottom: 30px;<br>
+}<br><br>
+.hero p {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 18px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #666;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin-bottom: 40px;<br>
+}<br><br>
+.btn-primary {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #6B46C1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: white;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 16px 48px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border: none;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 8px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 18px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-weight: bold;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cursor: pointer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transition: transform 0.2s, box-shadow 0.2s;<br>
+}
+                </code>
+            </div>
+
+            <h3>1.3. Скріншот</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="images/tag_selectors_screenshot.png" alt="Скріншот селекторів тегів" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none;">
+                    [Тут має бути скріншот селекторів тегів]
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Селектори класів</h2>
+            
+            <h3>2.1. HTML-код</h3>
+            <div class="code-block">
+                <code>
+&lt;div class="product-card"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="images/pink dress.jpg" class="product-image"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="product-info"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3 class="product-title"&gt;Рожеві сукні&lt;/h3&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class="btn-add-cart"&gt;Додати до кошика&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&lt;/div&gt;
+                </code>
+            </div>
+
+            <h3>2.2. CSS-код</h3>
+            <div class="code-block">
+                <code>
+.product-card {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background: white;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 12px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;overflow: hidden;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0 2px 8px rgba(0,0,0,0.1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transition: transform 0.3s, box-shadow 0.3s;<br>
+}<br><br>
+.product-card:hover {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transform: translateY(-5px);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0 8px 16px rgba(0,0,0,0.15);<br>
+}<br><br>
+.product-card.highlighted {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border: 3px solid #3B82F6;<br>
+}<br><br>
+.product-image {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;height: 300px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;object-fit: cover;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);<br>
+}<br><br>
+.btn-add-cart {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #333;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: white;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 12px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border: none;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 8px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 16px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cursor: pointer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transition: background-color 0.3s;<br>
+}<br><br>
+.btn-add-cart:hover {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #555;<br>
+}
+                </code>
+            </div>
+
+            <h3>2.3. Скріншот</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="images/class_selectors_screenshot.png" alt="Скріншот селекторів класів" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none;">
+                    [Тут має бути скріншот селекторів класів]
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Селектори ідентифікаторів</h2>
+            
+            <h3>3.1. HTML-код</h3>
+            <div class="code-block">
+                <code>
+&lt;section id="products"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 class="section-title"&gt;Щойно надійшло&lt;/h2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="product-grid"&gt;...&lt;/div&gt;<br>
+&lt;/section&gt;<br><br>
+&lt;section id="contact"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Зв'яжіться з нами&lt;/h2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;form class="contact-form"&gt;...&lt;/form&gt;<br>
+&lt;/section&gt;
+                </code>
+            </div>
+
+            <h3>3.2. CSS-код</h3>
+            <div class="code-block">
+                <code>
+#products {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 60px 40px;<br>
+}<br><br>
+#contact {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 60px 40px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f9f9f9;<br>
+}
+                </code>
+            </div>
+
+            <h3>3.3. Скріншот</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="images/id_selectors_screenshot.png" alt="Скріншот селекторів ідентифікаторів" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none;">
+                    [Тут має бути скріншот селекторів ідентифікаторів]
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Інші селектори</h2>
+            
+            <h3>4.1. Сусідні селектори</h3>
+            <div class="code-block">
+                <code>
+/* Сусідній селектор: елемент, що йде одразу після іншого */<br>
+.section-title + button {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin-top: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0 4px 12px rgba(107, 70, 193, 0.3);<br>
+}<br><br>
+h2 + p {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin-top: 10px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-weight: 500;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #6B46C1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding-left: 15px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-left: 3px solid #6B46C1;<br>
+}
+                </code>
+            </div>
+
+            <h3>4.2. Дочірні селектори</h3>
+            <div class="code-block">
+                <code>
+/* Дочірній селектор: прямий дочірній елемент */<br>
+.hero-gallery > img {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 320px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;height: 480px;<br>
+}<br><br>
+/* Дочірній селектор для списків */<br>
+.features-list > div {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 35px;<br>
+}
+                </code>
+            </div>
+
+            <h3>4.3. Селектор атрибута</h3>
+            <div class="code-block">
+                <code>
+/* Селектор атрибута */<br>
+input[type="text"] {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 12px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border: 2px solid #4CAF50;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 8px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f0f9f0;<br>
+}<br><br>
+input[type="email"] {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 12px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border: 2px solid #2196F3;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 8px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f0f7ff;<br>
+}<br><br>
+input[type="tel"] {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 12px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border: 2px solid #FF9800;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 8px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #fff8f0;<br>
+}<br><br>
+input[type="email"]:focus {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-color: #6B46C1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.1);<br>
+}
+                </code>
+            </div>
+
+            <h3>4.4. Універсальний селектор</h3>
+            <div class="code-block">
+                <code>
+/* Універсальний селектор - застосовується до всіх елементів */<br>
+* {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;box-sizing: border-box;<br>
+}
+                </code>
+            </div>
+
+            <h3>4.5. Скріншот</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="images/other_selectors_screenshot.png" alt="Скріншот інших селекторів" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none;">
+                    [Тут має бути скріншот інших селекторів]
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>5. CSS: Шрифти, Текст, Таблиці, Фон, Контур, Списки, CSS Просунутий</h2>
+            
+            <h3>5.1. Шрифти</h3>
+            <div class="code-block">
+                <code>
+body {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 16px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-weight: normal;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-style: normal;<br>
+}<br><br>
+.hero h1 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 48px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-weight: bold;<br>
+}<br><br>
+.logo {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 24px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-weight: bold;<br>
+}
+                </code>
+            </div>
+
+            <h3>5.2. Контури (Borders)</h3>
+            <div class="code-block">
+                <code>
+.product-card {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 12px;<br>
+}<br><br>
+.hero-gallery img {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid #e8e8e8;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 16px;<br>
+}<br><br>
+.product-card.highlighted {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border: 3px solid #3B82F6;<br>
+}<br><br>
+header {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-bottom: 1px solid #e0e0e0;<br>
+}<br><br>
+.nav-links a {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 4px;<br>
+}
+                </code>
+            </div>
+
+            <h3>5.3. Фон</h3>
+            <div class="code-block">
+                <code>
+body {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #ffffff;<br>
+}<br><br>
+.hero {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);<br>
+}<br><br>
+.promo-banner {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #6B46C1;<br>
+}<br><br>
+.highlight-box {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);<br>
+}
+                </code>
+            </div>
+
+            <h3>5.4. Колір тексту</h3>
+            <div class="code-block">
+                <code>
+body {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #333;<br>
+}<br><br>
+.hero h1, .hero h2 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #333;<br>
+}<br><br>
+h2 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #6B46C1;<br>
+}<br><br>
+p {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #666;<br>
+}<br><br>
+.hero h1 .highlight {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #6B46C1;<br>
+}
+                </code>
+            </div>
+
+            <h3>5.5. CSS-властивості для таблиць</h3>
+            <div class="code-block">
+                <code>
+.pricing-table {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-collapse: collapse;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin: 40px 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background: white;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0 2px 8px rgba(0,0,0,0.1);<br>
+}<br><br>
+.pricing-table th,<br>
+.pricing-table td {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 15px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;text-align: left;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-bottom: 1px solid #ddd;<br>
+}<br><br>
+.pricing-table th {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #6B46C1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: white;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-weight: bold;<br>
+}<br><br>
+.pricing-table tr:hover {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f5f5f5;<br>
+}
+                </code>
+            </div>
+
+            <h3>5.6. CSS-властивості для багаторівневих списків</h3>
+            <div class="code-block">
+                <code>
+.features-list ul {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list-style: none;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 0;<br>
+}<br><br>
+.features-list ol {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list-style: none;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;counter-reset: step-counter;<br>
+}<br><br>
+.features-list ul li {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin-bottom: 16px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #555;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 16px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;line-height: 1.6;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding-left: 32px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+}<br><br>
+.features-list ul li:before {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;content: "✓";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;left: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #6B46C1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-weight: bold;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 18px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 24px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;height: 24px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background: #6B46C1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 50%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: white;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 14px;<br>
+}<br><br>
+.features-list ol li {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;counter-increment: step-counter;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin-bottom: 16px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding-left: 48px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+}<br><br>
+.features-list ol li:before {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;content: counter(step-counter);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;left: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 32px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;height: 32px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background: #6B46C1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 50%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: white;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-weight: bold;<br>
+}
+                </code>
+            </div>
+
+            <h3>5.7. CSS Просунутий</h3>
+            <div class="code-block">
+                <code>
+/* Flexbox */<br>
+nav {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-between;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br>
+}<br><br>
+/* Grid */<br>
+.product-grid {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gap: 30px;<br>
+}<br><br>
+/* Transform та Transition */<br>
+.hero-gallery img:hover {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transform: scale(1.05) translateY(-10px);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transition: transform 0.3s ease, box-shadow 0.3s ease;<br>
+}<br><br>
+/* Псевдокласи */<br>
+.nav-links a:hover {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f0f0f0;<br>
+}<br><br>
+.nav-links a.active {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #6B46C1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: white;<br>
+}<br><br>
+/* nth-child селектор */<br>
+.hero-gallery img:nth-child(2) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin-top: 60px;<br>
+}
+                </code>
+            </div>
+
+            <h3>5.8. Скріншот</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="images/css_styling_screenshot.png" alt="Скріншот CSS стилізації" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none;">
+                    [Тут має бути скріншот CSS стилізації]
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>6. Висновки</h2>
+            <p>
+                Під час виконання лабораторної роботи №2 було опановано використання каскадних таблиць стилів (CSS) та різних типів селекторів 
+                для стилізації WEB-застосунку. В процесі роботи було застосовано селектори тегів, класів, ідентифікаторів, а також інші типи 
+                селекторів для створення сучасного та функціонального дизайну.
+            </p>
+            <div class="highlight-box">
+                <h4>Основні досягнення:</h4>
+                <ol>
+                    <li>Опановано використання селекторів тегів для стилізації HTML-елементів</li>
+                    <li>Застосовано селектори класів для створення перевикористовуваних стилів</li>
+                    <li>Використано селектори ідентифікаторів для унікальних елементів</li>
+                    <li>Застосовано сусідні, дочірні селектори, селектор атрибута та універсальний селектор</li>
+                    <li>Реалізовано стилізацію текстових елементів: шрифти, контури, фон, колір тексту</li>
+                    <li>Застосовано CSS-властивості для таблиць та багаторівневих списків</li>
+                    <li>Використано просунуті CSS технології: Flexbox, Grid, Transform, Transition, псевдокласи</li>
+                    <li>Всі стилі винесено в окремий файл styles.css для кращої організації коду</li>
+                </ol>
+            </div>
+            <p>
+                Отримані знання та навички дозволяють створювати сучасні та стильові WEB-сторінки з використанням каскадних таблиць стилів. 
+                Розуміння різних типів селекторів та їх застосування є важливим для створення гнучких та підтримуваних стилів веб-додатків.
+            </p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 WEB-застосунок. Всі права захищені.</p>
+    </footer>
+</body>
+</html>
