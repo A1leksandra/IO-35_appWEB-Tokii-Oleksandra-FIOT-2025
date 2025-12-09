@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Звіт з лабораторної роботи №3</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="top-bar"></div>
+    
+    <header>
+        <h1>Звіт з лабораторної роботи №3</h1>
+        <p class="subtitle">Верстка власного сайту з адаптивною навігацією та медіа-запитами</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>1. Тема, мета, місце розташування</h2>
+            <table class="info-table">
+                <tr>
+                    <th>Параметр</th>
+                    <th>Значення</th>
+                </tr>
+                <tr>
+                    <td><strong>Тема</strong></td>
+                    <td>Верстка власного сайту з адаптивною навігацією та медіа-запитами</td>
+                </tr>
+                <tr>
+                    <td><strong>Мета</strong></td>
+                    <td>Опанувати навички створення адаптивної верстки з використанням семантичних HTML-тегів, CSS Grid/Flexbox, медіа-запитів та JavaScript для реалізації адаптивної навігації</td>
+                </tr>
+                <tr>
+                    <td><strong>Місце розташування WEB-застосунку</strong></td>
+                    <td>Файл: <code>index.html</code> в кореневій директорії проєкту</td>
+                </tr>
+                <tr>
+                    <td><strong>Місце розташування звітного HTML-документу</strong></td>
+                    <td>Файл: <code>reports/lab3_report.html</code></td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>2. Семантичні компоненти інтерфейсу</h2>
+            
+            <h3>2.1. Шапка (header) з логотипом та навігаційним меню</h3>
+            <div class="highlight-box">
+                <p>Реалізовано семантичний тег <code>&lt;header&gt;</code> з наступними елементами:</p>
+                <ul>
+                    <li><strong>Логотип:</strong> <code>&lt;div class="logo"&gt;Одяг Олександри&lt;/div&gt;</code></li>
+                    <li><strong>Навігація:</strong> <code>&lt;nav&gt;</code> з <code>&lt;ul class="nav-links"&gt;</code></li>
+                    <li><strong>Бургер-меню:</strong> <code>&lt;button class="burger-menu"&gt;</code> для мобільних пристроїв</li>
+                    <li><strong>Іконки:</strong> профіль та кошик покупок</li>
+                </ul>
+            </div>
+
+            <h3>2.2. Основний блок із розташуванням інформаційних карток</h3>
+            <div class="highlight-box">
+                <p>Реалізовано через семантичні теги <code>&lt;section&gt;</code>:</p>
+                <ul>
+                    <li><strong>Hero-секція:</strong> головний банер з заголовком та кнопкою</li>
+                    <li><strong>Галерея:</strong> <code>&lt;section class="hero-gallery"&gt;</code> з зображеннями</li>
+                    <li><strong>Товари:</strong> <code>&lt;section class="products"&gt;</code> з сіткою карток товарів</li>
+                    <li><strong>Промо-банер:</strong> <code>&lt;section class="promo-banner"&gt;</code></li>
+                    <li><strong>Контакти:</strong> <code>&lt;section class="contact-section"&gt;</code> з формою</li>
+                </ul>
+            </div>
+
+            <h3>2.3. Нижній колонтитул (footer)</h3>
+            <div class="highlight-box">
+                <p>Реалізовано семантичний тег <code>&lt;footer&gt;</code> з:</p>
+                <ul>
+                    <li>Структурованою інформацією у вигляді grid-сітки</li>
+                    <li>Розділами: "Наш магазин", "Компанія", "Адреса"</li>
+                    <li>Контактними посиланнями та адресою</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Функціонально-стилістичні вимоги</h2>
+            
+            <h3>3.1. Адаптивна навігація з бургер-меню</h3>
+            <div class="highlight-box">
+                <h4>Реалізація:</h4>
+                <p><strong>HTML-код бургер-меню:</strong></p>
+                <div class="code-block">
+                    <code>
+&lt;button class="burger-menu" aria-label="Меню"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;&lt;/span&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;&lt;/span&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;&lt;/span&gt;<br>
+&lt;/button&gt;
+                    </code>
+                </div>
+                <p><strong>CSS-стилі:</strong></p>
+                <div class="code-block">
+                    <code>
+.burger-menu {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: none;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;flex-direction: column;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background: transparent;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border: none;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cursor: pointer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 5px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z-index: 1001;<br>
+}
+                    </code>
+                </div>
+                <p><strong>JavaScript-функціонал:</strong> (файл <code>script.js</code>)</p>
+                <div class="code-block">
+                    <code>
+document.addEventListener('DOMContentLoaded', function() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const burgerMenu = document.querySelector('.burger-menu');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const navLinks = document.querySelector('.nav-links');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;burgerMenu.addEventListener('click', function() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navLinks.classList.toggle('active');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;burgerMenu.classList.toggle('active');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+});
+                    </code>
+                </div>
+                <p><strong>Особливості:</strong></p>
+                <ul>
+                    <li>Бургер-меню з'являється на екранах до 1200px</li>
+                    <li>Плавна анімація перетворення іконки при кліку</li>
+                    <li>Меню виїжджає зліва з плавним переходом</li>
+                    <li>Автоматичне закриття меню при кліку на посилання</li>
+                </ul>
+            </div>
+
+            <h3>3.2. Адаптивна сітка контенту (flexbox/grid)</h3>
+            <div class="highlight-box">
+                <h4>Використання CSS Grid:</h4>
+                <div class="code-block">
+                    <code>
+.product-grid {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gap: 30px;<br>
+}
+                    </code>
+                </div>
+                <h4>Використання Flexbox:</h4>
+                <div class="code-block">
+                    <code>
+nav {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-between;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br>
+}
+                    </code>
+                </div>
+                <p><strong>Переваги:</strong></p>
+                <ul>
+                    <li>Динамічна адаптація кількості колонок залежно від ширини екрана</li>
+                    <li>Автоматичне вирівнювання елементів</li>
+                    <li>Гнучкість та масштабованість</li>
+                </ul>
+            </div>
+
+            <h3>3.3. Медіа-запити (media queries)</h3>
+            <div class="highlight-box">
+                <h4>Реалізовані breakpoints:</h4>
+                <ul>
+                    <li><strong>@media (max-width: 1200px):</strong> Адаптація навігації, поява бургер-меню</li>
+                    <li><strong>@media (max-width: 1024px):</strong> Адаптація для планшетів</li>
+                    <li><strong>@media (max-width: 768px):</strong> Адаптація для мобільних пристроїв</li>
+                    <li><strong>@media (orientation: landscape):</strong> Адаптація для ландшафтної орієнтації</li>
+                </ul>
+                <p><strong>Приклад медіа-запиту:</strong></p>
+                <div class="code-block">
+                    <code>
+@media (max-width: 768px) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.burger-menu {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.nav-links {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position: fixed;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left: -100%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top: 70px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flex-direction: column;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transition: 0.3s;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.nav-links.active {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}
+                    </code>
+                </div>
+            </div>
+
+            <h3>3.4. Відносні одиниці вимірювання</h3>
+            <div class="highlight-box">
+                <p><strong>Використані відносні одиниці:</strong></p>
+                <ul>
+                    <li><strong>%</strong> - для ширини контейнерів та елементів (width: 100%)</li>
+                    <li><strong>rem</strong> - для розмірів шрифтів та відступів (font-size: 2rem, padding: 2rem)</li>
+                    <li><strong>em</strong> - для деяких розмірів відносно батьківського елемента</li>
+                    <li><strong>vw/vh</strong> - можуть бути використані для адаптації до viewport</li>
+                </ul>
+                <p><strong>Приклади:</strong></p>
+                <div class="code-block">
+                    <code>
+.container {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max-width: 1200px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 2rem 40px;<br>
+}<br>
+<br>
+section h2 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 2rem;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin-bottom: 1rem;<br>
+}
+                    </code>
+                </div>
+            </div>
+
+            <h3>3.5. Візуальні ефекти та анімації</h3>
+            <div class="highlight-box">
+                <p><strong>Реалізовані ефекти:</strong></p>
+                <ul>
+                    <li><strong>Плавні переходи:</strong> <code>transition: transform 0.3s, box-shadow 0.3s</code></li>
+                    <li><strong>Ефект підняття карток:</strong> <code>transform: translateY(-5px)</code> при hover</li>
+                    <li><strong>Зміна тіні:</strong> <code>box-shadow: 0 8px 16px rgba(0,0,0,0.15)</code></li>
+                    <li><strong>Анімація зображень:</strong> <code>transform: scale(1.05) translateY(-10px)</code></li>
+                    <li><strong>Плавна зміна кольорів:</strong> <code>transition: color 0.3s</code></li>
+                    <li><strong>Анімація бургер-меню:</strong> плавне перетворення іконки при кліку</li>
+                </ul>
+                <p><strong>Приклад анімації:</strong></p>
+                <div class="code-block">
+                    <code>
+.product-card {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transition: transform 0.3s, box-shadow 0.3s;<br>
+}<br>
+<br>
+.product-card:hover {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transform: translateY(-5px);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0 8px 16px rgba(0,0,0,0.15);<br>
+}
+                    </code>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Файлова структура веб-застосунку</h2>
+            <div class="highlight-box">
+                <h4>Організація файлів:</h4>
+                <ul>
+                    <li><strong>HTML-документи:</strong> окремо в кореневій директорії
+                        <ul>
+                            <li><code>index.html</code> - головна сторінка</li>
+                            <li><code>description.html</code> - опис застосунку</li>
+                            <li><code>reports.html</code> - сторінка звітів</li>
+                        </ul>
+                    </li>
+                    <li><strong>Стилі:</strong> окремий файл <code>styles.css</code> в кореневій директорії</li>
+                    <li><strong>Скрипти:</strong> окремий файл <code>script.js</code> для функціоналу бургер-меню</li>
+                    <li><strong>Графічні ресурси:</strong> окрема папка <code>images/</code> з усіма зображеннями</li>
+                    <li><strong>Звіти:</strong> окрема папка <code>reports/</code> з HTML-звітами</li>
+                </ul>
+                <p><strong>Висновок:</strong> Файлова структура логічно організована та відповідає вимогам. Всі ресурси зберігаються окремо відповідно до їх призначення.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>5. Код бургер-меню</h2>
+            
+            <h3>5.1. HTML-код</h3>
+            <div class="code-block">
+                <code>
+&lt;button class="burger-menu" aria-label="Меню"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;&lt;/span&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;&lt;/span&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;&lt;/span&gt;<br>
+&lt;/button&gt;
+                </code>
+            </div>
+
+            <h3>5.2. CSS-код</h3>
+            <div class="code-block">
+                <code>
+.burger-menu {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: none;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;flex-direction: column;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background: transparent;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border: none;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cursor: pointer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 5px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z-index: 1001;<br>
+}<br>
+<br>
+.burger-menu span {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 25px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;height: 3px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #333;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin: 3px 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transition: 0.3s;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 3px;<br>
+}<br>
+<br>
+.burger-menu.active span:nth-child(1) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transform: rotate(-45deg) translate(-5px, 6px);<br>
+}<br>
+<br>
+.burger-menu.active span:nth-child(2) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;opacity: 0;<br>
+}<br>
+<br>
+.burger-menu.active span:nth-child(3) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transform: rotate(45deg) translate(-5px, -6px);<br>
+}
+                </code>
+            </div>
+
+            <h3>5.3. JavaScript-код</h3>
+            <div class="code-block">
+                <code>
+document.addEventListener('DOMContentLoaded', function() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const burgerMenu = document.querySelector('.burger-menu');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const navLinks = document.querySelector('.nav-links');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (burgerMenu && navLinks) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;burgerMenu.addEventListener('click', function() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navLinks.classList.toggle('active');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;burgerMenu.classList.toggle('active');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const links = navLinks.querySelectorAll('a');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;links.forEach(link => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.addEventListener('click', function() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navLinks.classList.remove('active');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;burgerMenu.classList.remove('active');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+});
+                </code>
+            </div>
+
+            <h3>5.4. Скріншот бургер-меню</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="../images/burger_menu_screenshot.png" alt="Скріншот бургер-меню" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none;">
+                    [Тут має бути скріншот бургер-меню]
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>6. Код медіа-запитів</h2>
+            
+            <h3>6.1. Медіа-запит для планшетів та менших екранів</h3>
+            <div class="code-block">
+                <code>
+@media (max-width: 1200px) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.burger-menu {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.nav-links {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: none;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.nav-links.active {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}
+                </code>
+            </div>
+
+            <h3>6.2. Медіа-запит для мобільних пристроїв</h3>
+            <div class="code-block">
+                <code>
+@media (max-width: 768px) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.nav-links {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position: fixed;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left: -100%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top: 70px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flex-direction: column;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color: #ffffff;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transition: 0.3s;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.nav-links.active {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.hero h1 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size: 32px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.product-grid {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: 1fr;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}
+                </code>
+            </div>
+
+            <h3>6.3. Медіа-запит для орієнтації</h3>
+            <div class="code-block">
+                <code>
+@media (orientation: landscape) and (max-height: 500px) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.hero {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding: 30px 20px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.hero h1 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size: 28px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}
+                </code>
+            </div>
+        </section>
+
+        <section>
+            <h2>7. Висновки</h2>
+            <p>
+                Під час виконання лабораторної роботи №3 було реалізовано верстку власного сайту з повною відповідністю 
+                всім вимогам щодо адаптивності та функціональності.
+            </p>
+            <div class="highlight-box">
+                <h4>Основні досягнення:</h4>
+                <ol>
+                    <li>Створено семантичну структуру HTML з використанням тегів <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code></li>
+                    <li>Реалізовано адаптивну навігацію з бургер-меню, яка трансформується на пристроях з малою роздільною здатністю</li>
+                    <li>Застосовано CSS Grid та Flexbox для створення адаптивної сітки контенту</li>
+                    <li>Додано медіа-запити для адаптації стилів під різні розміри екранів (десктоп, планшет, смартфон)</li>
+                    <li>Використано відносні одиниці вимірювання (% , rem, em) для забезпечення гнучкості інтерфейсу</li>
+                    <li>Реалізовано візуальні ефекти та анімації (плавне відкриття меню, зміна стану елементів при наведенні)</li>
+                    <li>Організовано логічну файлову структуру з окремими файлами для HTML, CSS, JavaScript та ресурсів</li>
+                </ol>
+            </div>
+            <p>
+                Отримані знання та навички дозволяють створювати сучасні адаптивні веб-сайти, які коректно відображаються 
+                на різних пристроях та розмірах екранів. Розуміння принципів адаптивної верстки, використання медіа-запитів 
+                та реалізація інтерактивних елементів є важливими для створення доступних та зручних веб-додатків.
+            </p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 WEB-застосунок. Всі права захищені.</p>
+    </footer>
+</body>
+</html>
