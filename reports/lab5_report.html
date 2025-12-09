@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Звіт з лабораторної роботи №5</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="top-bar"></div>
+    
+    <header>
+        <h1>Звіт з лабораторної роботи №5</h1>
+        <p class="subtitle">Стрілочні функції та методи масивів в JavaScript</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>1. Тема, мета, місце розташування</h2>
+            <table class="info-table">
+                <tr>
+                    <th>Параметр</th>
+                    <th>Значення</th>
+                </tr>
+                <tr>
+                    <td><strong>Тема</strong></td>
+                    <td>Стрілочні функції та методи масивів в JavaScript: обробка об'єктів, фільтрація, сортування, перевірка умов</td>
+                </tr>
+                <tr>
+                    <td><strong>Мета</strong></td>
+                    <td>Опанувати навички роботи зі стрілочними функціями, методами масивів (filter, map, sort, every), обробкою об'єктів та дат</td>
+                </tr>
+                <tr>
+                    <td><strong>Місце розташування WEB-застосунку</strong></td>
+                    <td>Файли: <code>lab5/task1.js</code>, <code>lab5/task2.js</code>, <code>lab5/index1.html</code>, <code>lab5/index2.html</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Місце розташування звітного HTML-документу</strong></td>
+                    <td>Файл: <code>reports/lab5_report.html</code></td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>2. ЗАВДАННЯ №1</h2>
+            <p>З об'єкту medicines потрібно:</p>
+            <ul>
+                <li>Отримати масив, в якому будуть лише назви препаратів</li>
+                <li>Прибрати медикаменти, в яких строк зберігання вже пройшов</li>
+                <li>У новому масиві відсортувати медикаменти у хронологічному порядку</li>
+                <li>Результат вивести у консоль</li>
+                <li>Застосувати стрілочні функції</li>
+            </ul>
+
+            <h3>2.1. Програмний код</h3>
+            <div class="code-block">
+                <code>
+// Об'єкт з медикаментами та їх датами зберігання<br>
+const medicines = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Агалгін: new Date("2022-05-01"),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ношпа: new Date("2025-07-02"),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Альфахолін: new Date("2024-12-21"),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Аспірин: new Date("2022-08-15"),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Аспаркам: new Date("2024-04-18"),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Парацетамол: new Date(), // Сьогоднішня дата<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ібупрофен: new Date("2025-12-31"), // Майбутня дата<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Нурофен: new Date("2026-03-15"), // Майбутня дата<br>
+};<br>
+<br>
+// Отримуємо поточну дату<br>
+const currentDate = new Date();<br>
+<br>
+// Отримуємо масив з назвами препаратів та їх датами (стрілочна функція)<br>
+const getMedicineNames = (meds) => Object.keys(meds);<br>
+<br>
+// Фільтруємо непросрочені препарати (стрілочна функція)<br>
+const filterValidMedicines = (meds) => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return Object.entries(meds)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.filter(([name, expiryDate]) => expiryDate >= currentDate)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.map(([name, expiryDate]) => ({ name, expiryDate }));<br>
+};<br>
+<br>
+// Сортуємо медикаменти у хронологічному порядку (стрілочна функція)<br>
+const sortByDate = (medicinesArray) => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return medicinesArray.sort((a, b) => a.expiryDate - b.expiryDate);<br>
+};<br>
+<br>
+// Отримуємо тільки назви з відсортованого масиву (стрілочна функція)<br>
+const getNamesOnly = (medicinesArray) => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return medicinesArray.map(med => med.name);<br>
+};
+                </code>
+            </div>
+
+            <h3>2.2. Пояснення коду</h3>
+            <div class="highlight-box">
+                <h4>Основні елементи коду:</h4>
+                <ul>
+                    <li><strong>const getMedicineNames = (meds) => Object.keys(meds)</strong> - стрілочна функція для отримання масиву ключів об'єкта (назв препаратів). Синтаксис стрілочної функції: `(параметри) => вираз`</li>
+                    <li><strong>Object.keys()</strong> - метод для отримання масиву ключів об'єкта</li>
+                    <li><strong>Object.entries()</strong> - метод для отримання масиву пар [ключ, значення] з об'єкта</li>
+                    <li><strong>.filter(([name, expiryDate]) => expiryDate >= currentDate)</strong> - метод filter() зі стрілочною функцією для фільтрації непросрочених препаратів. Використовує деструктуризацію масиву</li>
+                    <li><strong>.map(([name, expiryDate]) => ({ name, expiryDate }))</strong> - метод map() для перетворення масиву пар у масив об'єктів</li>
+                    <li><strong>.sort((a, b) => a.expiryDate - b.expiryDate)</strong> - метод sort() зі стрілочною функцією для сортування за датою у хронологічному порядку</li>
+                    <li><strong>.map(med => med.name)</strong> - метод map() для отримання тільки назв препаратів</li>
+                    <li><strong>Стрілочні функції</strong> - короткий синтаксис для написання функцій: `(параметри) => вираз` або `(параметри) => { return вираз; }`</li>
+                </ul>
+            </div>
+
+            <h3>2.3. Результати виконання (скріншот вкладки Console)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="../images/lab5_task1_console_screenshot.png" alt="Скріншот вкладки Console з результатами виконання завдання №1" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none; padding: 2rem; background-color: #f5f5f5; border: 2px dashed #ddd; border-radius: 8px;">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот вкладки Console з результатами виконання завдання №1]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл lab5/index1.html у браузері</li>
+                        <li>Натисніть F12 для відкриття інструментів розробника</li>
+                        <li>Перейдіть на вкладку Console</li>
+                        <li>Зробіть скріншот консолі з виведеними результатами обробки медикаментів</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. ЗАВДАННЯ №2</h2>
+            <p>Перевірити, чи є кожен елемент масиву парним:</p>
+            <ul>
+                <li>Дано масив чисел: <code>[2, 4, 6, 8, 10]</code></li>
+                <li>Перевірити, чи всі елементи парні</li>
+                <li>Очікуваний результат: <code>true</code></li>
+                <li>Використати стрілочні функції</li>
+            </ul>
+
+            <h3>3.1. Програмний код</h3>
+            <div class="code-block">
+                <code>
+// Дано масив чисел<br>
+const numbers = [2, 4, 6, 8, 10];<br>
+<br>
+// Перевірка, чи є кожен елемент масиву парним (стрілочна функція)<br>
+const areAllEven = (arr) => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return arr.every(num => num % 2 === 0);<br>
+};<br>
+<br>
+// Альтернативний варіант з використанням стрілочної функції безпосередньо<br>
+const areAllEvenShort = (arr) => arr.every(num => num % 2 === 0);<br>
+<br>
+// Виконуємо перевірку<br>
+const result = areAllEven(numbers);<br>
+console.log("Масив чисел:", numbers);<br>
+console.log("Чи всі елементи парні?", result);<br>
+console.log("Очікуваний результат: true");
+                </code>
+            </div>
+
+            <h3>3.2. Пояснення коду</h3>
+            <div class="highlight-box">
+                <h4>Основні елементи коду:</h4>
+                <ul>
+                    <li><strong>const areAllEven = (arr) => { ... }</strong> - стрілочна функція для перевірки, чи всі елементи масиву парні</li>
+                    <li><strong>arr.every()</strong> - метод масиву, який перевіряє, чи всі елементи відповідають заданій умові. Повертає true, якщо всі елементи проходять перевірку, інакше - false</li>
+                    <li><strong>num => num % 2 === 0</strong> - стрілочна функція-предикат для перевірки парності числа. Використовує оператор модуло (%)</li>
+                    <li><strong>num % 2 === 0</strong> - перевірка парності: якщо залишок від ділення на 2 дорівнює 0, то число парне</li>
+                    <li><strong>const areAllEvenShort = (arr) => arr.every(num => num % 2 === 0)</strong> - короткий варіант стрілочної функції без фігурних дужок (implicit return)</li>
+                    <li><strong>Метод every()</strong> - перевіряє всі елементи масиву і повертає true тільки якщо всі елементи проходять перевірку</li>
+                </ul>
+            </div>
+
+            <h3>3.3. Результати виконання (скріншот вкладки Console)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="../images/lab5_task2_console_screenshot.png" alt="Скріншот вкладки Console з результатами виконання завдання №2" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none; padding: 2rem; background-color: #f5f5f5; border: 2px dashed #ddd; border-radius: 8px;">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот вкладки Console з результатами виконання завдання №2]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл lab5/index2.html у браузері</li>
+                        <li>Натисніть F12 для відкриття інструментів розробника</li>
+                        <li>Перейдіть на вкладку Console</li>
+                        <li>Зробіть скріншот консолі з виведеним результатом перевірки (true)</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Висновки</h2>
+            <p>
+                Під час виконання лабораторної роботи №5 було створено JavaScript-код, який демонструє роботу зі стрілочними функціями 
+                та методами масивів для обробки об'єктів, фільтрації даних, сортування та перевірки умов.
+            </p>
+            <div class="highlight-box">
+                <h4>Основні досягнення:</h4>
+                <ol>
+                    <li>Опановано синтаксис стрілочних функцій (arrow functions) та їх переваги</li>
+                    <li>Використано метод <code>Object.keys()</code> для отримання ключів об'єкта</li>
+                    <li>Використано метод <code>Object.entries()</code> для отримання пар ключ-значення з об'єкта</li>
+                    <li>Опановано метод <code>filter()</code> для фільтрації елементів масиву за умовою</li>
+                    <li>Опановано метод <code>map()</code> для перетворення елементів масиву</li>
+                    <li>Опановано метод <code>sort()</code> для сортування масивів</li>
+                    <li>Опановано метод <code>every()</code> для перевірки, чи всі елементи відповідають умові</li>
+                    <li>Використано деструктуризацію масивів у стрілочних функціях</li>
+                    <li>Реалізовано обробку дат та перевірку термінів зберігання</li>
+                    <li>Опановано ланцюжок методів (method chaining) для послідовної обробки даних</li>
+                    <li>Зрозуміто переваги стрілочних функцій: коротший синтаксис, автоматичне прив'язування this</li>
+                </ol>
+            </div>
+            <p>
+                Отримані знання та навички дозволяють ефективно працювати з масивами та об'єктами в JavaScript, використовуючи 
+                сучасний синтаксис стрілочних функцій та вбудовані методи масивів. Розуміння принципів роботи з методами 
+                <code>filter()</code>, <code>map()</code>, <code>sort()</code>, <code>every()</code>, <code>Object.keys()</code>, 
+                <code>Object.entries()</code> та стрілочними функціями є важливим для створення елегантного та ефективного коду 
+                в JavaScript.
+            </p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 WEB-застосунок. Всі права захищені.</p>
+    </footer>
+</body>
+</html>
+

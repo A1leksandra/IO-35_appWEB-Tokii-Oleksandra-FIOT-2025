@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Звіт з лабораторної роботи №4</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="top-bar"></div>
+    
+    <header>
+        <h1>Звіт з лабораторної роботи №4</h1>
+        <p class="subtitle">Основи JavaScript: prompt(), alert(), console.log(), switch-case</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>1. Тема, мета, місце розташування</h2>
+            <table class="info-table">
+                <tr>
+                    <th>Параметр</th>
+                    <th>Значення</th>
+                </tr>
+                <tr>
+                    <td><strong>Тема</strong></td>
+                    <td>Основи JavaScript: використання prompt(), alert(), console.log(), умовних операторів та switch-case</td>
+                </tr>
+                <tr>
+                    <td><strong>Мета</strong></td>
+                    <td>Опанувати навички роботи з базовими методами JavaScript для введення та виведення даних, використання шаблонних рядків та умовних операторів</td>
+                </tr>
+                <tr>
+                    <td><strong>Місце розташування WEB-застосунку</strong></td>
+                    <td>Файли: <code>lab4/task1.js</code>, <code>lab4/task2.js</code>, <code>lab4/task3.js</code>, <code>lab4/task4.js</code>, <code>lab4/task5.js</code>, <code>lab4/task6.js</code>, <code>lab4/task7.js</code>, <code>lab4/task8.js</code>, <code>lab4/task9.js</code>, <code>lab4/index.html</code>, <code>lab4/index2.html</code>, <code>lab4/index3.html</code>, <code>lab4/index4.html</code>, <code>lab4/index5.html</code>, <code>lab4/index6.html</code>, <code>lab4/index7.html</code>, <code>lab4/index8.html</code>, <code>lab4/index9.html</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Місце розташування звітного HTML-документу</strong></td>
+                    <td>Файл: <code>reports/lab4_report.html</code></td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>2. ЗАВДАННЯ №1</h2>
+            <p>Створити JavaScript-код, який:</p>
+            <ul>
+                <li>Зберігає введене значення (використовуючи метод prompt()) у змінну value</li>
+                <li>Виводить це значення у Console, використовуючи шаблонний рядок</li>
+                <li>Перевіряє: введене значення від'ємне? Додатнє? Дорівнює нулю?</li>
+                <li>Відповідь виводить за допомогою alert()</li>
+            </ul>
+
+            <h3>2.1. Програмний код</h3>
+            <div class="code-block">
+                <code>
+// Збережіть введене значення (використати метод prompt()) у змінну value<br>
+let value = prompt("Введіть число:");<br>
+<br>
+// Вивести це значення у Console, використовуючи шаблонний рядок<br>
+console.log(`Введене значення: ${value}`);<br>
+<br>
+// Перевірити: введене значення від'ємне? Додатнє? Дорівнює нулю?<br>
+// Перетворюємо рядок на число для перевірки<br>
+let numberValue = Number(value);<br>
+<br>
+// Перевірка на валідність числа<br>
+if (isNaN(numberValue)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log("Помилка: введено не число!");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alert("Помилка: введено не число!");<br>
+} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Відповідь вивести за допомогою alert()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (numberValue > 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("Число додатнє");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Число додатнє");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;} else if (numberValue < 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("Число від'ємне");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Число від'ємне");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("Число дорівнює нулю");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Число дорівнює нулю");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}
+                </code>
+            </div>
+
+            <h3>2.2. Пояснення коду</h3>
+            <div class="highlight-box">
+                <h4>Основні елементи коду:</h4>
+                <ul>
+                    <li><strong>prompt("Введіть число:")</strong> - метод для отримання введеного користувачем значення. Повертає рядок або null, якщо користувач натиснув "Скасувати"</li>
+                    <li><strong>console.log(`Введене значення: ${value}`)</strong> - виведення значення в консоль браузера з використанням шаблонного рядка (template literal). Шаблонні рядки дозволяють вставляти змінні через ${}</li>
+                    <li><strong>Number(value)</strong> - перетворення рядка на число. Якщо перетворення неможливе, повертає NaN</li>
+                    <li><strong>isNaN(numberValue)</strong> - перевірка, чи є значення NaN (Not a Number). Використовується для валідації введених даних</li>
+                    <li><strong>if-else if-else</strong> - умовні оператори для перевірки знака числа (додатнє, від'ємне, нуль)</li>
+                    <li><strong>alert()</strong> - метод для виведення повідомлення в діалоговому вікні браузера</li>
+                </ul>
+            </div>
+
+            <h3>2.3. Результати виконання (скріншот вкладки Console)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="../images/lab4_console_screenshot.png" alt="Скріншот вкладки Console з результатами виконання завдання №1" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none; padding: 2rem; background-color: #f5f5f5; border: 2px dashed #ddd; border-radius: 8px;">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот вкладки Console з результатами виконання]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл lab4/index.html у браузері</li>
+                        <li>Натисніть F12 для відкриття інструментів розробника</li>
+                        <li>Перейдіть на вкладку Console</li>
+                        <li>Введіть число в prompt() (наприклад, 80)</li>
+                        <li>Зробіть скріншот консолі з виведеним повідомленням</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. ЗАВДАННЯ №2</h2>
+            <p>Створити JavaScript-код, який:</p>
+            <ul>
+                <li>Запитує значення у користувача через prompt() (число від 1 до 4)</li>
+                <li>Використовує switch-case для визначення пори року</li>
+                <li>Має дефолтне значення для некоректних введень</li>
+                <li>Виводить результат в консоль через console.log()</li>
+            </ul>
+
+            <h3>3.1. Програмний код</h3>
+            <div class="code-block">
+                <code>
+// Запитуємо значення у користувача через prompt<br>
+let number = prompt("Введіть число від 1 до 4:");<br>
+<br>
+// Змінна для збереження результату<br>
+let result;<br>
+<br>
+// Використовуємо switch-case для визначення пори року<br>
+switch (number) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case '1':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = 'зима';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case '2':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = 'весна';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case '3':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = 'літо';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case '4':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = 'осінь';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = 'невідома пора року';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+}<br>
+<br>
+// Виводимо значення змінної result в консоль<br>
+console.log(`Результат: ${result}`);
+                </code>
+            </div>
+
+            <h3>3.2. Пояснення коду</h3>
+            <div class="highlight-box">
+                <h4>Основні елементи коду:</h4>
+                <ul>
+                    <li><strong>prompt("Введіть число від 1 до 4:")</strong> - метод для отримання введеного користувачем значення. Повертає рядок</li>
+                    <li><strong>switch (number)</strong> - оператор switch використовується для вибору одного з багатьох блоків коду для виконання. Більш зручний для множинних перевірок, ніж if-else</li>
+                    <li><strong>case '1':</strong> - перевіряє, чи значення number дорівнює '1'. Якщо так, виконується код після двокрапки</li>
+                    <li><strong>break;</strong> - виходить з блоку switch, запобігаючи виконанню наступних case. Без break виконаються всі наступні case (fall-through)</li>
+                    <li><strong>default:</strong> - виконується, якщо жоден case не відповідає значенню. Використовується для обробки некоректних або неочікуваних значень</li>
+                    <li><strong>console.log(`Результат: ${result}`)</strong> - виведення результату в консоль браузера з використанням шаблонного рядка</li>
+                </ul>
+            </div>
+
+            <h3>3.3. Результати виконання (скріншот вкладки Console)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="../images/lab4_task2_console_screenshot.png" alt="Скріншот вкладки Console з результатами виконання завдання №2" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none; padding: 2rem; background-color: #f5f5f5; border: 2px dashed #ddd; border-radius: 8px;">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот вкладки Console з результатами виконання завдання №2]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл lab4/index2.html у браузері</li>
+                        <li>Натисніть F12 для відкриття інструментів розробника</li>
+                        <li>Перейдіть на вкладку Console</li>
+                        <li>Введіть число від 1 до 4 в prompt() (наприклад, 2)</li>
+                        <li>Зробіть скріншот консолі з виведеним повідомленням "Результат: весна"</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. ЗАВДАННЯ №3</h2>
+            <p>Створити JavaScript-код для системи авторизації, який:</p>
+            <ul>
+                <li>Об'являє та ініціалізує логіни та паролі для Admin та User</li>
+                <li>Запитує логін у користувача через prompt()</li>
+                <li>Виводить введений логін в консоль браузера, використовуючи шаблонний рядок</li>
+                <li>Перевіряє введене значення:
+                    <ul>
+                        <li>Якщо "Admin" - запитує пароль, при вдалій ідентифікації виводить "Hello, Admin"</li>
+                        <li>Якщо нічого не ввели або натиснули Cancel - виводить "Cancelled"</li>
+                        <li>В іншому випадку - виводить "I don't know you"</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>4.1. Програмний код</h3>
+            <div class="code-block">
+                <code>
+// Об'являємо та ініціалізуємо логіни та паролі<br>
+const Admin = 'Admin';<br>
+const adminPassword = 'admin123';<br>
+const User = 'User';<br>
+const userPassword = 'user123';<br>
+<br>
+// Запитуємо логін у користувача через prompt<br>
+let login = prompt("Введіть логін:");<br>
+<br>
+// Виводимо результат в консоль браузера, використовуючи шаблонний рядок<br>
+console.log(`Введений логін: ${login}`);<br>
+<br>
+// Перевірка введеного користувачем значення<br>
+if (login === null || login.trim() === '') {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Якщо нічого не ввели або натиснули Cancel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log("Cancelled");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alert("Cancelled");<br>
+} else if (login.trim() === Admin) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Якщо відвідувач вводить "Admin", то prompt запитує пароль<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let password = prompt("Введіть пароль:");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// У випадку вдалої ідентифікації в alert вивести «Hello, Admin»<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (password === adminPassword) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("Hello, Admin");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Hello, Admin");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("I don't know you");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("I don't know you");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// В іншому випадку вивести в alert рядок "I don't know you"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log("I don't know you");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alert("I don't know you");<br>
+}
+                </code>
+            </div>
+
+            <h3>4.2. Пояснення коду</h3>
+            <div class="highlight-box">
+                <h4>Основні елементи коду:</h4>
+                <ul>
+                    <li><strong>const Admin = 'Admin'</strong> - об'явлення та ініціалізація константи з логіном Admin</li>
+                    <li><strong>const adminPassword = 'admin123'</strong> - об'явлення та ініціалізація константи з паролем для Admin</li>
+                    <li><strong>prompt("Введіть логін:")</strong> - метод для отримання логіну від користувача. Повертає рядок або null, якщо натиснуто Cancel</li>
+                    <li><strong>console.log(`Введений логін: ${login}`)</strong> - виведення логіну в консоль з використанням шаблонного рядка</li>
+                    <li><strong>login === null</strong> - перевірка, чи користувач натиснув Cancel (prompt повертає null)</li>
+                    <li><strong>login.trim() === ''</strong> - перевірка, чи введено порожній рядок (trim() видаляє пробіли на початку та в кінці)</li>
+                    <li><strong>login.trim() === Admin</strong> - перевірка, чи введений логін відповідає Admin (з видаленням пробілів)</li>
+                    <li><strong>password === adminPassword</strong> - перевірка правильності введеного пароля</li>
+                    <li><strong>alert()</strong> - метод для виведення повідомлень користувачу в діалоговому вікні</li>
+                </ul>
+            </div>
+
+            <h3>4.3. Результати виконання (скріншот вкладки Console)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="../images/lab4_task3_console_screenshot.png" alt="Скріншот вкладки Console з результатами виконання завдання №3" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none; padding: 2rem; background-color: #f5f5f5; border: 2px dashed #ddd; border-radius: 8px;">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот вкладки Console з результатами виконання завдання №3]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл lab4/index3.html у браузері</li>
+                        <li>Натисніть F12 для відкриття інструментів розробника</li>
+                        <li>Перейдіть на вкладку Console</li>
+                        <li>Введіть логін "Admin" в prompt()</li>
+                        <li>Введіть пароль "admin123"</li>
+                        <li>Зробіть скріншот консолі з виведеним повідомленням "Введений логін: Admin"</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>5. ЗАВДАННЯ №4</h2>
+            <p>Створити функцію для станції з продажу ремонтних дроїдів, яка:</p>
+            <ul>
+                <li>Оголошує функцію <code>makeTransaction</code> з двома параметрами:
+                    <ul>
+                        <li><code>quantity</code> - кількість замовлених дроїдів</li>
+                        <li><code>pricePerDroid</code> - вартість одного дроїда</li>
+                    </ul>
+                </li>
+                <li>Обчислює загальну вартість замовлення</li>
+                <li>Повертає рядок з повідомленням про покупку у форматі: "You ordered &lt;quantity&gt; droids worth &lt;totalPrice&gt; credits!"</li>
+            </ul>
+
+            <h3>5.1. Програмний код</h3>
+            <div class="code-block">
+                <code>
+// Оголошуємо функцію makeTransaction<br>
+function makeTransaction(quantity, pricePerDroid) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Обчислюємо загальну вартість замовлення<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let totalPrice = quantity * pricePerDroid;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Повертаємо рядок з повідомленням про покупку<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return `You ordered ${quantity} droids worth ${totalPrice} credits!`;<br>
+}<br>
+<br>
+// Приклади використання функції<br>
+console.log(makeTransaction(5, 3000));<br>
+console.log(makeTransaction(3, 1000));<br>
+console.log(makeTransaction(10, 500));
+                </code>
+            </div>
+
+            <h3>5.2. Пояснення коду</h3>
+            <div class="highlight-box">
+                <h4>Основні елементи коду:</h4>
+                <ul>
+                    <li><strong>function makeTransaction(quantity, pricePerDroid)</strong> - оголошення функції з двома параметрами. Функція - це блок коду, який можна викликати багато разів з різними аргументами</li>
+                    <li><strong>quantity</strong> - перший параметр функції, число, що містить кількість замовлених дроїдів</li>
+                    <li><strong>pricePerDroid</strong> - другий параметр функції, число, що містить вартість одного дроїда</li>
+                    <li><strong>let totalPrice = quantity * pricePerDroid</strong> - обчислення загальної вартості замовлення шляхом множення кількості на ціну за одиницю</li>
+                    <li><strong>return</strong> - ключове слово для повернення значення з функції. Після return виконання функції припиняється</li>
+                    <li><strong>`You ordered ${quantity} droids worth ${totalPrice} credits!`</strong> - шаблонний рядок (template literal), який повертається функцією. Використовує ${} для вставки значень змінних</li>
+                    <li><strong>console.log(makeTransaction(5, 3000))</strong> - виклик функції з конкретними аргументами та виведення результату в консоль</li>
+                </ul>
+            </div>
+
+            <h3>5.3. Результати виконання (скріншот вкладки Console)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="../images/lab4_task4_console_screenshot.png" alt="Скріншот вкладки Console з результатами виконання завдання №4" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none; padding: 2rem; background-color: #f5f5f5; border: 2px dashed #ddd; border-radius: 8px;">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот вкладки Console з результатами виконання завдання №4]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл lab4/index4.html у браузері</li>
+                        <li>Натисніть F12 для відкриття інструментів розробника</li>
+                        <li>Перейдіть на вкладку Console</li>
+                        <li>Зробіть скріншот консолі з виведеними повідомленнями про покупку дроїдів</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>6. ЗАВДАННЯ №5</h2>
+            <p>Створити функцію для перевірки повідомлень на заборонені слова, яка:</p>
+            <ul>
+                <li>Оголошує функцію <code>checkForSpam</code> з параметром <code>message</code> (рядок)</li>
+                <li>Перевіряє рядок на вміст заборонених слів "spam" та "sale"</li>
+                <li>Працює незалежно від регістру букв (SPAM, sAlE, SpAm тощо)</li>
+                <li>Повертає <code>true</code>, якщо знайдено заборонене слово</li>
+                <li>Повертає <code>false</code>, якщо заборонених слів немає</li>
+            </ul>
+
+            <h3>6.1. Програмний код</h3>
+            <div class="code-block">
+                <code>
+// Оголошуємо функцію checkForSpam<br>
+function checkForSpam(message) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Перетворюємо рядок на нижній регістр для порівняння незалежно від регістру<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let lowerMessage = message.toLowerCase();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Перевіряємо наявність заборонених слів<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (lowerMessage.includes('spam') || lowerMessage.includes('sale')) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+<br>
+// Приклади використання функції<br>
+console.log(checkForSpam("Latest technology news")); // false<br>
+console.log(checkForSpam("JavaScript weekly newsletter")); // false<br>
+console.log(checkForSpam("Get best sale offers now!")); // true<br>
+console.log(checkForSpam("Amazing SalE, only today!")); // true<br>
+console.log(checkForSpam("Trust me, this is not a spam message")); // true<br>
+console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true<br>
+console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+                </code>
+            </div>
+
+            <h3>6.2. Пояснення коду</h3>
+            <div class="highlight-box">
+                <h4>Основні елементи коду:</h4>
+                <ul>
+                    <li><strong>function checkForSpam(message)</strong> - оголошення функції з одним параметром message (рядок)</li>
+                    <li><strong>message.toLowerCase()</strong> - метод для перетворення рядка на нижній регістр. Дозволяє перевіряти слова незалежно від того, як вони написані (SPAM, SpAm, spam - все стане "spam")</li>
+                    <li><strong>lowerMessage.includes('spam')</strong> - метод includes() перевіряє, чи містить рядок підрядок 'spam'. Повертає true, якщо знайдено, false - якщо ні</li>
+                    <li><strong>||</strong> - логічний оператор "АБО" (OR). Вираз повертає true, якщо хоча б одна з умов істинна</li>
+                    <li><strong>return true</strong> - повертає бульове значення true, якщо знайдено заборонене слово</li>
+                    <li><strong>return false</strong> - повертає бульове значення false, якщо заборонених слів не знайдено</li>
+                    <li><strong>Бульові значення (boolean)</strong> - тип даних, який може мати тільки два значення: true (істина) або false (хибність)</li>
+                </ul>
+            </div>
+
+            <h3>6.3. Результати виконання (скріншот вкладки Console)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="../images/lab4_task5_console_screenshot.png" alt="Скріншот вкладки Console з результатами виконання завдання №5" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none; padding: 2rem; background-color: #f5f5f5; border: 2px dashed #ddd; border-radius: 8px;">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот вкладки Console з результатами виконання завдання №5]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл lab4/index5.html у браузері</li>
+                        <li>Натисніть F12 для відкриття інструментів розробника</li>
+                        <li>Перейдіть на вкладку Console</li>
+                        <li>Зробіть скріншот консолі з виведеними результатами перевірки (true/false)</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>7. ЗАВДАННЯ №6</h2>
+            <p>Створити функцію для фільтрації масиву чисел, яка:</p>
+            <ul>
+                <li>Оголошує функцію <code>filterArray</code> з двома параметрами:
+                    <ul>
+                        <li><code>numbers</code> - масив чисел</li>
+                        <li><code>value</code> - значення для порівняння</li>
+                    </ul>
+                </li>
+                <li>Створює порожній масив для збереження підходящих чисел</li>
+                <li>Використовує цикл для ітерації кожного елемента масиву</li>
+                <li>Використовує умовний оператор if для перевірки та додавання елементів</li>
+                <li>Повертає новий масив лише з тих чисел, які більші за value</li>
+            </ul>
+
+            <h3>7.1. Програмний код</h3>
+            <div class="code-block">
+                <code>
+// Оголошуємо функцію filterArray<br>
+function filterArray(numbers, value) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Створюємо порожній масив, у який будемо додавати підходящі числа<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let filteredArray = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Використовуємо цикл для ітерації кожного елемента масиву numbers<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i < numbers.length; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Використовуємо умовний оператор if для перевірки кожного елемента<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (numbers[i] > value) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Додаємо елемент до нового масиву, якщо він більший за value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filteredArray.push(numbers[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Повертаємо новий масив з підходящими числами<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return filteredArray;<br>
+}
+                </code>
+            </div>
+
+            <h3>7.2. Пояснення коду</h3>
+            <div class="highlight-box">
+                <h4>Основні елементи коду:</h4>
+                <ul>
+                    <li><strong>function filterArray(numbers, value)</strong> - оголошення функції з двома параметрами: масивом чисел та значенням для порівняння</li>
+                    <li><strong>let filteredArray = []</strong> - створення порожнього масиву для збереження відфільтрованих чисел</li>
+                    <li><strong>for (let i = 0; i < numbers.length; i++)</strong> - цикл for для ітерації по всіх елементах масиву. i - індекс поточного елемента, починається з 0 і збільшується до numbers.length - 1</li>
+                    <li><strong>numbers[i]</strong> - доступ до елемента масиву за індексом i</li>
+                    <li><strong>numbers.length</strong> - властивість масиву, що повертає кількість елементів у масиві</li>
+                    <li><strong>if (numbers[i] > value)</strong> - умовний оператор для перевірки, чи поточний елемент більший за value</li>
+                    <li><strong>filteredArray.push(numbers[i])</strong> - метод push() додає елемент до кінця масиву</li>
+                    <li><strong>return filteredArray</strong> - повертає новий масив з відфільтрованими числами</li>
+                    <li><strong>Масиви (arrays)</strong> - структура даних для зберігання колекції елементів. Елементи мають індекси, починаючи з 0</li>
+                </ul>
+            </div>
+
+            <h3>7.3. Результати виконання (скріншот вкладки Console)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="../images/lab4_task6_console_screenshot.png" alt="Скріншот вкладки Console з результатами виконання завдання №6" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none; padding: 2rem; background-color: #f5f5f5; border: 2px dashed #ddd; border-radius: 8px;">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот вкладки Console з результатами виконання завдання №6]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл lab4/index6.html у браузері</li>
+                        <li>Натисніть F12 для відкриття інструментів розробника</li>
+                        <li>Перейдіть на вкладку Console</li>
+                        <li>Зробіть скріншот консолі з виведеними результатами фільтрації масивів</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>8. ЗАВДАННЯ №7</h2>
+            <p>Створити програму для роботи з масивами та сортуванням, яка:</p>
+            <ul>
+                <li>Задає одновимірний масив A, кількість елементів якого задається користувачем</li>
+                <li>Побудовує масив B, кожен елемент якого обчислюється за формулою: bі = max * ai, де max - максимальний елемент масиву A</li>
+                <li>Виводить вхідний та вихідний масиви</li>
+                <li>Виконує сортування вихідного масиву за зменшенням методом вставки</li>
+                <li>Використовує функції для всіх операцій</li>
+            </ul>
+
+            <h3>8.1. Програмний код</h3>
+            <div class="code-block">
+                <code>
+// Функція для знаходження максимального елемента масиву<br>
+function findMax(array) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let max = array[0];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 1; i < array.length; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (array[i] > max) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max = array[i];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return max;<br>
+}<br>
+<br>
+// Функція для побудови масиву B: bі = max * ai<br>
+function buildArrayB(arrayA) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let max = findMax(arrayA);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let arrayB = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i < arrayA.length; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrayB.push(max * arrayA[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return arrayB;<br>
+}<br>
+<br>
+// Функція для сортування масиву за зменшенням методом вставки<br>
+function insertionSortDescending(array) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let sortedArray = [...array]; // Створюємо копію масиву<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 1; i < sortedArray.length; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let current = sortedArray[i];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let j = i - 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Переміщуємо елементи, які менші за current, на одну позицію вправо<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (j >= 0 && sortedArray[j] < current) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sortedArray[j + 1] = sortedArray[j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j--;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sortedArray[j + 1] = current;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return sortedArray;<br>
+}<br>
+<br>
+// Функція для виведення масиву<br>
+function printArray(array, name) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(`${name}: [${array.join(', ')}]`);<br>
+}
+                </code>
+            </div>
+
+            <h3>8.2. Пояснення коду</h3>
+            <div class="highlight-box">
+                <h4>Основні елементи коду:</h4>
+                <ul>
+                    <li><strong>function findMax(array)</strong> - функція для знаходження максимального елемента масиву. Проходить по всіх елементах та знаходить найбільший</li>
+                    <li><strong>function buildArrayB(arrayA)</strong> - функція для побудови масиву B. Кожен елемент bі = max * ai, де max - максимальний елемент масиву A</li>
+                    <li><strong>function insertionSortDescending(array)</strong> - функція для сортування масиву за зменшенням методом вставки. Алгоритм працює так: береться елемент та вставляється в правильну позицію серед вже відсортованих елементів</li>
+                    <li><strong>[...array]</strong> - оператор spread для створення копії масиву, щоб не змінювати оригінальний</li>
+                    <li><strong>while (j >= 0 && sortedArray[j] < current)</strong> - цикл while для знаходження правильної позиції для вставки елемента. Умова sortedArray[j] < current означає сортування за зменшенням</li>
+                    <li><strong>function printArray(array, name)</strong> - функція для виведення масиву в консоль у зручному форматі</li>
+                    <li><strong>array.join(', ')</strong> - метод join() об'єднує елементи масиву в рядок з роздільником ", "</li>
+                    <li><strong>parseInt()</strong> - функція для перетворення рядка на ціле число</li>
+                    <li><strong>parseFloat()</strong> - функція для перетворення рядка на число з плаваючою комою</li>
+                    <li><strong>Метод вставки (Insertion Sort)</strong> - алгоритм сортування, який працює шляхом побудови відсортованого масиву по одному елементу за раз</li>
+                </ul>
+            </div>
+
+            <h3>8.3. Результати виконання (скріншот вкладки Console)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="../images/lab4_task7_console_screenshot.png" alt="Скріншот вкладки Console з результатами виконання завдання №7" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none; padding: 2rem; background-color: #f5f5f5; border: 2px dashed #ddd; border-radius: 8px;">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот вкладки Console з результатами виконання завдання №7]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл lab4/index7.html у браузері</li>
+                        <li>Натисніть F12 для відкриття інструментів розробника</li>
+                        <li>Перейдіть на вкладку Console</li>
+                        <li>Введіть кількість елементів та значення масиву A</li>
+                        <li>Зробіть скріншот консолі з виведеними масивами A, B та відсортованим масивом B</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>9. ЗАВДАННЯ №8</h2>
+            <p>Створити програму для роботи з двовимірними масивами, яка:</p>
+            <ul>
+                <li>Об'являє та ініціалізує двовимірний масив додатніх і від'ємних чисел генератором випадкових чисел</li>
+                <li>Виводить двовимірний масив у Console браузера</li>
+                <li>Створює два масиви: масив додатніх чисел і масив від'ємних чисел</li>
+                <li>Замінює третій елемент у додатньому масиві на від'ємне значення, введене через prompt()</li>
+                <li>Виводить результати у Console браузера</li>
+            </ul>
+
+            <h3>9.1. Програмний код</h3>
+            <div class="code-block">
+                <code>
+// Функція для генерації випадкового числа в діапазоні від min до max<br>
+function getRandomNumber(min, max) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return Math.floor(Math.random() * (max - min + 1)) + min;<br>
+}<br>
+<br>
+// Функція для створення двовимірного масиву з випадковими числами<br>
+function create2DArray(rows, cols, minValue, maxValue) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let array = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i < rows; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let row = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (let j = 0; j < cols; j++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row.push(getRandomNumber(minValue, maxValue));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array.push(row);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return array;<br>
+}<br>
+<br>
+// Функція для виведення двовимірного масиву в консоль<br>
+function print2DArray(array, name) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log(`${name}:`);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i < array.length; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(`  [${array[i].join(', ')}]`);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+<br>
+// Функція для розділення чисел на додатні та від'ємні<br>
+function separateNumbers(array2D) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let positiveArray = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let negativeArray = [];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i < array2D.length; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (let j = 0; j < array2D[i].length; j++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (array2D[i][j] > 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;positiveArray.push(array2D[i][j]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (array2D[i][j] < 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;negativeArray.push(array2D[i][j]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return { positive: positiveArray, negative: negativeArray };<br>
+}
+                </code>
+            </div>
+
+            <h3>9.2. Пояснення коду</h3>
+            <div class="highlight-box">
+                <h4>Основні елементи коду:</h4>
+                <ul>
+                    <li><strong>function getRandomNumber(min, max)</strong> - функція для генерації випадкового числа в заданому діапазоні. Використовує Math.random() та Math.floor()</li>
+                    <li><strong>Math.random()</strong> - метод, що повертає випадкове число від 0 до 1 (не включно)</li>
+                    <li><strong>Math.floor()</strong> - метод для округлення числа вниз до найближчого цілого</li>
+                    <li><strong>function create2DArray(rows, cols, minValue, maxValue)</strong> - функція для створення двовимірного масиву (масив масивів) з випадковими числами</li>
+                    <li><strong>Двовимірний масив</strong> - структура даних, що представляє собою масив масивів. Кожен елемент є масивом</li>
+                    <li><strong>Вкладені цикли for</strong> - використання циклу всередині циклу для обробки двовимірних структур даних</li>
+                    <li><strong>function print2DArray(array, name)</strong> - функція для виведення двовимірного масиву в консоль у зручному форматі</li>
+                    <li><strong>function separateNumbers(array2D)</strong> - функція для розділення чисел з двовимірного масиву на додатні та від'ємні</li>
+                    <li><strong>Деструктуризація об'єкта</strong> - використання синтаксису { positive: positiveArray, negative: negativeArray } для отримання значень з об'єкта</li>
+                    <li><strong>positiveArray[2] = negativeValue</strong> - заміна третього елемента (індекс 2) у масиві на нове значення</li>
+                    <li><strong>parseFloat()</strong> - функція для перетворення рядка на число з плаваючою комою</li>
+                </ul>
+            </div>
+
+            <h3>9.3. Результати виконання (скріншот вкладки Console)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="../images/lab4_task8_console_screenshot.png" alt="Скріншот вкладки Console з результатами виконання завдання №8" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none; padding: 2rem; background-color: #f5f5f5; border: 2px dashed #ddd; border-radius: 8px;">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот вкладки Console з результатами виконання завдання №8]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл lab4/index8.html у браузері</li>
+                        <li>Натисніть F12 для відкриття інструментів розробника</li>
+                        <li>Перейдіть на вкладку Console</li>
+                        <li>Введіть від'ємне значення в prompt()</li>
+                        <li>Зробіть скріншот консолі з виведеними двовимірним масивом, масивами додатніх та від'ємних чисел та результатом після заміни</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>10. ЗАВДАННЯ №9</h2>
+            <p>Реалізувати калькулятор мовою JavaScript з інтерфейсом, який:</p>
+            <ul>
+                <li>Має інтерфейс з кнопками для цифр та операцій</li>
+                <li>Реалізує обов'язкові операції:
+                    <ul>
+                        <li>Додавання (+)</li>
+                        <li>Віднімання (-)</li>
+                        <li>Множення (×)</li>
+                        <li>Ділення (/)</li>
+                        <li>Залишок від ділення (%)</li>
+                        <li>Корінь квадратний (√)</li>
+                        <li>Піднесення до степеня (x^y)</li>
+                    </ul>
+                </li>
+                <li>Має функції очищення (C) та видалення останнього символу (⌫)</li>
+                <li>Відображає результати обчислень на дисплеї</li>
+            </ul>
+
+            <h3>10.1. Програмний код</h3>
+            <div class="code-block">
+                <code>
+// Змінні для зберігання стану калькулятора<br>
+let display = document.getElementById('display');<br>
+let currentInput = '0';<br>
+let previousInput = '';<br>
+let operation = null;<br>
+let shouldResetDisplay = false;<br>
+<br>
+// Функція для додавання цифри<br>
+function appendNumber(number) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (shouldResetDisplay) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currentInput = '0';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shouldResetDisplay = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (currentInput === '0') {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currentInput = number.toString();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currentInput += number.toString();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;updateDisplay();<br>
+}<br>
+<br>
+// Функція для обчислення результату<br>
+function calculate() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let result;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const prev = parseFloat(previousInput);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const current = parseFloat(currentInput);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (isNaN(prev) || isNaN(current)) return;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;switch (operation) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case '+':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = prev + current;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case '-':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = prev - current;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case '*':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = prev * current;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case '/':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (current === 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('Помилка: ділення на нуль!');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clear();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = prev / current;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case '%':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = prev % current;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case '^':<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = Math.pow(prev, current);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;currentInput = result.toString();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;previousInput = '';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;operation = null;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shouldResetDisplay = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;updateDisplay();<br>
+}<br>
+<br>
+// Функція для обчислення квадратного кореня<br>
+function calculateSquareRoot() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const current = parseFloat(currentInput);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (isNaN(current)) return;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (current < 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('Помилка: неможливо обчислити корінь з від\'ємного числа!');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;currentInput = Math.sqrt(current).toString();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shouldResetDisplay = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;updateDisplay();<br>
+}
+                </code>
+            </div>
+
+            <h3>10.2. Пояснення коду</h3>
+            <div class="highlight-box">
+                <h4>Основні елементи коду:</h4>
+                <ul>
+                    <li><strong>document.getElementById('display')</strong> - отримання посилання на елемент дисплею з HTML-документу</li>
+                    <li><strong>currentInput</strong> - змінна для зберігання поточного введеного значення</li>
+                    <li><strong>previousInput</strong> - змінна для зберігання попереднього значення при виконанні операцій</li>
+                    <li><strong>operation</strong> - змінна для зберігання вибраної операції (+, -, *, /, %, ^)</li>
+                    <li><strong>function appendNumber(number)</strong> - функція для додавання цифри до поточного введення</li>
+                    <li><strong>function chooseOperation(op)</strong> - функція для вибору операції та збереження попереднього значення</li>
+                    <li><strong>function calculate()</strong> - функція для обчислення результату операції з використанням switch-case</li>
+                    <li><strong>Math.pow(prev, current)</strong> - метод для піднесення числа до степеня (x^y)</li>
+                    <li><strong>Math.sqrt(current)</strong> - метод для обчислення квадратного кореня</li>
+                    <li><strong>parseFloat()</strong> - функція для перетворення рядка на число з плаваючою комою</li>
+                    <li><strong>toString()</strong> - метод для перетворення числа на рядок</li>
+                    <li><strong>function clear()</strong> - функція для очищення всіх значень калькулятора</li>
+                    <li><strong>function backspace()</strong> - функція для видалення останнього символу</li>
+                    <li><strong>DOM (Document Object Model)</strong> - представлення HTML-документу як об'єкта, що дозволяє взаємодіяти з елементами через JavaScript</li>
+                </ul>
+            </div>
+
+            <h3>10.3. Результати виконання (скріншот інтерфейсу калькулятора)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="../images/lab4_task9_calculator_screenshot.png" alt="Скріншот інтерфейсу калькулятора" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="screenshot-placeholder" style="display: none; padding: 2rem; background-color: #f5f5f5; border: 2px dashed #ddd; border-radius: 8px;">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот інтерфейсу калькулятора]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл lab4/index9.html у браузері</li>
+                        <li>Зробіть скріншот інтерфейсу калькулятора з кнопками та дисплеєм</li>
+                        <li>Можна також зробити скріншот під час виконання обчислень</li>
+                        <li>Збережіть як images/lab4_task9_calculator_screenshot.png</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>11. Висновки</h2>
+            <p>
+                Під час виконання лабораторної роботи №4 було створено JavaScript-код, який демонструє роботу з базовими методами 
+                введення та виведення даних, використання шаблонних рядків, умовних операторів, оператора switch-case, системи авторизації, 
+                функцій, роботи з рядками та бульовими значеннями, масивами, циклами, алгоритмами сортування, двовимірними масивами та 
+                створення інтерактивних веб-інтерфейсів з використанням DOM.
+            </p>
+            <div class="highlight-box">
+                <h4>Основні досягнення:</h4>
+                <ol>
+                    <li>Опановано використання методу <code>prompt()</code> для отримання введених користувачем даних</li>
+                    <li>Навченося використовувати шаблонні рядки (template literals) для форматування виводу в консоль</li>
+                    <li>Реалізовано перевірку введених даних на валідність (перевірка на число)</li>
+                    <li>Використано умовні оператори (if-else) для визначення знака числа та авторизації</li>
+                    <li>Опановано використання методу <code>alert()</code> для виведення результатів користувачу</li>
+                    <li>Додано обробку помилок для випадків, коли введено нечислове значення або некоректні дані</li>
+                    <li>Опановано використання оператора <code>switch-case</code> для множинних перевірок значень</li>
+                    <li>Реалізовано дефолтне значення (default case) для обробки некоректних введень</li>
+                    <li>Створено систему авторизації з перевіркою логіну та пароля</li>
+                    <li>Реалізовано обробку випадків скасування введення (null) та порожніх рядків</li>
+                    <li>Використано метод <code>trim()</code> для видалення зайвих пробілів при перевірці введених даних</li>
+                    <li>Опановано створення та використання функцій з параметрами та поверненням значень</li>
+                    <li>Реалізовано функцію <code>makeTransaction</code> для обчислення та форматування повідомлень про покупки</li>
+                    <li>Опановано роботу з методами рядків: <code>toLowerCase()</code> для перетворення регістру</li>
+                    <li>Використано метод <code>includes()</code> для пошуку підрядків у рядках</li>
+                    <li>Реалізовано функцію <code>checkForSpam</code> для перевірки повідомлень на заборонені слова</li>
+                    <li>Опановано роботу з бульовими значеннями (true/false) та логічними операторами (||)</li>
+                    <li>Опановано роботу з масивами: створення, доступ до елементів, ітерація</li>
+                    <li>Використано цикл <code>for</code> для ітерації по елементах масиву</li>
+                    <li>Реалізовано функцію <code>filterArray</code> для фільтрації масиву чисел за умовою</li>
+                    <li>Опановано метод <code>push()</code> для додавання елементів до масиву</li>
+                    <li>Реалізовано функцію для знаходження максимального елемента масиву</li>
+                    <li>Опановано побудову нового масиву на основі існуючого з використанням математичних операцій</li>
+                    <li>Реалізовано алгоритм сортування методом вставки (Insertion Sort) для сортування за зменшенням</li>
+                    <li>Використано оператор spread (<code>...</code>) для створення копій масивів</li>
+                    <li>Опановано роботу з циклами <code>while</code> для реалізації алгоритмів сортування</li>
+                    <li>Використано методи <code>parseInt()</code> та <code>parseFloat()</code> для перетворення рядків на числа</li>
+                    <li>Опановано метод <code>join()</code> для форматування виводу масивів</li>
+                    <li>Опановано роботу з двовимірними масивами (масивами масивів)</li>
+                    <li>Використано вкладені цикли для обробки двовимірних структур даних</li>
+                    <li>Реалізовано генерацію випадкових чисел за допомогою <code>Math.random()</code> та <code>Math.floor()</code></li>
+                    <li>Опановано деструктуризацію об'єктів для отримання значень</li>
+                    <li>Реалізовано функції для створення, виведення та обробки двовимірних масивів</li>
+                    <li>Опановано маніпуляції з елементами масивів (заміна значень за індексом)</li>
+                    <li>Опановано роботу з DOM (Document Object Model) для взаємодії з HTML-елементами</li>
+                    <li>Реалізовано інтерактивний інтерфейс калькулятора з кнопками та дисплеєм</li>
+                    <li>Використано <code>document.getElementById()</code> для отримання посилань на елементи</li>
+                    <li>Реалізовано обробку подій (onclick) для кнопок калькулятора</li>
+                    <li>Опановано використання методів Math: <code>pow()</code> для піднесення до степеня та <code>sqrt()</code> для квадратного кореня</li>
+                    <li>Реалізовано обробку помилок (ділення на нуль, корінь з від'ємного числа)</li>
+                    <li>Опановано управління станом програми через змінні для зберігання поточних та попередніх значень</li>
+                    <li>Зрозуміто важливість перевірки та валідації введених даних перед їх обробкою</li>
+                </ol>
+            </div>
+            <p>
+                Отримані знання та навички дозволяють створювати інтерактивні веб-додатки з можливістю взаємодії з користувачем, 
+                включаючи системи авторизації, функції для обробки даних, перевірки вмісту, роботи з масивами, реалізації алгоритмів 
+                сортування, роботи з двовимірними структурами даних та створення повноцінних інтерактивних інтерфейсів. Розуміння 
+                принципів роботи з методами <code>prompt()</code>, <code>alert()</code>, <code>console.log()</code>, умовними операторами, 
+                оператором <code>switch-case</code>, функціями, методами роботи з рядками (<code>toLowerCase()</code>, <code>includes()</code>, 
+                <code>trim()</code>, <code>join()</code>), бульовими значеннями, масивами, циклами (<code>for</code>, <code>while</code>), 
+                методами масивів (<code>push()</code>), алгоритмами сортування, двовимірними масивами, методами Math (<code>random()</code>, 
+                <code>floor()</code>, <code>pow()</code>, <code>sqrt()</code>) та DOM-маніпуляціями є фундаментальним для подальшого вивчення 
+                JavaScript та створення більш складних веб-застосунків.
+            </p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 WEB-застосунок. Всі права захищені.</p>
+    </footer>
+</body>
+</html>
+
