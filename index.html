@@ -271,6 +271,24 @@
             <p>Tokij Aleksandra 2025 Frontend</p>
         </div>
     </footer>
+
+    <!-- Модальне вікно для опису товару -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="Товар" class="modal-image">
+                <div class="modal-info">
+                    <h2 id="modalTitle" class="modal-title"></h2>
+                    <span id="modalPrice" class="modal-price"></span>
+                    <p id="modalDescription" class="modal-description"></p>
+                    <div id="modalColors" class="modal-colors"></div>
+                    <button class="btn-add-cart modal-cart-btn">Додати до кошика</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

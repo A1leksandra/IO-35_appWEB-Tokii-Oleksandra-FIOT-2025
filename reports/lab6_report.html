@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Звіт з лабораторної роботи №6</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="top-bar"></div>
+    
+    <header>
+        <h1>Звіт з лабораторної роботи №6</h1>
+        <p class="subtitle">Делегування подій та модальні вікна в JavaScript</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>1. Тема, мета, місце розташування</h2>
+            <table class="info-table">
+                <tr>
+                    <th>Параметр</th>
+                    <th>Значення</th>
+                </tr>
+                <tr>
+                    <td><strong>Тема</strong></td>
+                    <td>Делегування подій у JavaScript: створення модального вікна для відображення опису товарів при виборі елемента з колекції</td>
+                </tr>
+                <tr>
+                    <td><strong>Мета</strong></td>
+                    <td>Опанувати техніку делегування подій (event delegation) для обробки подій на колекціях елементів, навчитися створювати та керувати модальними вікнами, реалізувати інтерактивний інтерфейс для відображення детальної інформації про товари</td>
+                </tr>
+                <tr>
+                    <td><strong>Місце розташування WEB-застосунку</strong></td>
+                    <td>Файли: <code>index.html</code>, <code>script.js</code>, <code>styles.css</code> (завдання 1 - делегування подій)<br>
+                        Файли: <code>lab6/index.html</code>, <code>lab6/task.js</code> (завдання 2 - показ/приховування пароля)</td>
+                </tr>
+                <tr>
+                    <td><strong>Місце розташування звітного HTML-документу</strong></td>
+                    <td>Файл: <code>reports/lab6_report.html</code></td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>2. ЗАВДАННЯ №2</h2>
+            <p>Використовуючи сценарій на JavaScript, виконати завдання: створити HTML-розмітку, яка складається з наступних елементів: текст, кнопка, інпут (поле введення). Кнопка "Приховати" ховає текст, виводячи зірочки замість введеної інформації, замінює назву кнопки на "Розкрити", при повторному натисканні текст знову стає доступним і кнопка набуває початкового вигляду.</p>
+
+            <h3>2.1. Програмний код</h3>
+            <div class="code-block">
+                <code>
+// Завдання 2: Показ/приховування пароля<br>
+// Кнопка "Приховати" ховає текст, показуючи зірочки,<br>
+// замінює назву кнопки на "Розкрити",<br>
+// при повторному натисканні текст знову стає доступним<br>
+<br>
+document.addEventListener('DOMContentLoaded', function() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Отримуємо посилання на елементи<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const passwordInput = document.getElementById('passwordInput');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const toggleButton = document.getElementById('toggleButton');<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Функція для оновлення стану кнопки та поля введення<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function updateToggleState() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (passwordInput.type === 'password') {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Текст прихований (зірочки) - кнопка повинна показувати "Розкрити"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toggleButton.textContent = 'Розкрити';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Текст видимий - кнопка повинна показувати "Приховати"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toggleButton.textContent = 'Приховати';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Встановлюємо початковий стан: текст видимий, кнопка "Приховати"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;passwordInput.type = 'text';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;updateToggleState();<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Обробник події кліку на кнопку<br>
+&nbsp;&nbsp;&nbsp;&nbsp;toggleButton.addEventListener('click', function() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Перемикаємо тип поля введення між "password" та "text"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (passwordInput.type === 'password') {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Якщо текст прихований - робимо його видимим<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;passwordInput.type = 'text';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Якщо текст видимий - ховаємо його (показуємо зірочки)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;passwordInput.type = 'password';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Оновлюємо текст кнопки<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateToggleState();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+});
+                </code>
+            </div>
+
+            <h3>2.2. Пояснення коду</h3>
+            <div class="highlight-box">
+                <h4>Основні елементи коду:</h4>
+                <ul>
+                    <li><strong>document.addEventListener('DOMContentLoaded', ...)</strong> - обробник події, який чекає повного завантаження HTML-документу перед виконанням коду. Це гарантує, що всі елементи вже існують в DOM</li>
+                    <li><strong>document.getElementById('passwordInput')</strong> - отримання посилання на елемент input за його ID. Використовується для доступу до поля введення пароля</li>
+                    <li><strong>document.getElementById('toggleButton')</strong> - отримання посилання на кнопку перемикання</li>
+                    <li><strong>passwordInput.type</strong> - властивість, яка визначає тип поля введення. Може бути 'text' (текст видимий) або 'password' (текст прихований зірочками)</li>
+                    <li><strong>toggleButton.textContent</strong> - властивість для отримання або встановлення текстового вмісту кнопки</li>
+                    <li><strong>addEventListener('click', ...)</strong> - додавання обробника події кліку на кнопку. При натисканні виконується функція</li>
+                    <li><strong>if-else</strong> - умовний оператор для перевірки поточного стану поля (приховане чи видиме) та зміни його типу</li>
+                    <li><strong>updateToggleState()</strong> - функція для синхронізації тексту кнопки з поточним станом поля введення</li>
+                </ul>
+            </div>
+
+            <h3>2.3. HTML-розмітка</h3>
+            <div class="code-block">
+                <code>
+&lt;div class="task-card"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 class="task-title"&gt;Завдання 2&lt;/h2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="input-group"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="input-wrapper"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" id="passwordInput" placeholder="Введіть пароль" value="пароль"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button id="toggleButton" class="toggle-button"&gt;Приховати&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&lt;/div&gt;
+                </code>
+            </div>
+
+            <h3>2.4. Логіка роботи</h3>
+            <ol>
+                <li><strong>Початковий стан:</strong> Поле має тип 'text', тому текст видимий. Кнопка відображає текст "Приховати"</li>
+                <li><strong>При натисканні "Приховати":</strong> Тип поля змінюється на 'password', текст стає прихованим (відображаються зірочки). Текст кнопки змінюється на "Розкрити"</li>
+                <li><strong>При натисканні "Розкрити":</strong> Тип поля змінюється на 'text', текст стає видимим. Текст кнопки змінюється на "Приховати"</li>
+                <li><strong>Цикл повторюється:</strong> Кожне натискання кнопки перемикає стан між видимим та прихованим текстом</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>3. ЗАВДАННЯ №1 (Делегування подій та модальне вікно)</h2>
+            <div class="highlight-box">
+                <p><strong>Завдання:</strong> У власному WEB-застосунку створити програмний код делегування подій: при виборі елемента в колекції елементів повинно відкритися модальне вікно, яке містить опис цього елемента (наприклад товару, книги та ін).</p>
+            </div>
+
+            <h3>3.1. Вимоги до реалізації</h3>
+            <ul>
+                <li>Використати техніку делегування подій для обробки кліків на елементах колекції товарів</li>
+                <li>Створити модальне вікно (modal window) для відображення детальної інформації про товар</li>
+                <li>Модальне вікно має містити: зображення товару, назву, ціну, детальний опис, доступні кольори</li>
+                <li>Реалізувати можливість закриття модального вікна різними способами (хрестик, клік поза вікном, клавіша Escape)</li>
+                <li>Додати анімації для плавного відкриття/закриття модального вікна</li>
+                <li>Забезпечити адаптивність модального вікна для різних розмірів екранів</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4. РЕАЛІЗАЦІЯ ЗАВДАННЯ №1</h2>
+
+            <h3>4.1. HTML-розмітка модального вікна</h3>
+            <p>Модальне вікно додано в кінець файлу <code>index.html</code> перед закриваючим тегом <code>&lt;/body&gt;</code>:</p>
+            <div class="code-block">
+                <code>
+&lt;!-- Модальне вікно для опису товару --&gt;<br>
+&lt;div id="productModal" class="modal"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="modal-content"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="modal-close"&gt;&amp;times;&lt;/span&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="modal-body"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img id="modalImage" src="" alt="Товар" class="modal-image"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="modal-info"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2 id="modalTitle" class="modal-title"&gt;&lt;/h2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span id="modalPrice" class="modal-price"&gt;&lt;/span&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p id="modalDescription" class="modal-description"&gt;&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="modalColors" class="modal-colors"&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class="btn-add-cart modal-cart-btn"&gt;Додати до кошика&lt;/button&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&lt;/div&gt;
+                </code>
+            </div>
+
+            <h3>4.2. CSS-стилі для модального вікна</h3>
+            <p>Додано стилі до файлу <code>styles.css</code> для оформлення модального вікна:</p>
+            <div class="code-block">
+                <code>
+/* Стилі для модального вікна */<br>
+.modal {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: none;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;position: fixed;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;z-index: 10000;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;left: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;top: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;height: 100%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;overflow: auto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: rgba(0, 0, 0, 0.7);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animation: fadeIn 0.3s;<br>
+}<br>
+<br>
+.modal.active {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
+}<br>
+<br>
+@keyframes fadeIn {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from { opacity: 0; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to { opacity: 1; }<br>
+}<br>
+<br>
+.modal-content {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: #ffffff;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin: auto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 16px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 90%;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max-width: 800px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animation: slideDown 0.3s;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max-height: 90vh;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;overflow-y: auto;<br>
+}<br>
+<br>
+@keyframes slideDown {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: translateY(-50px);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opacity: 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: translateY(0);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opacity: 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}
+                </code>
+            </div>
+
+            <h3>4.3. JavaScript-код з делегуванням подій</h3>
+            <p>Основна логіка реалізована в файлі <code>script.js</code>:</p>
+            <div class="code-block">
+                <code>
+// Делегування подій для модального вікна з описом товару<br>
+const productGrid = document.querySelector('.product-grid');<br>
+const modal = document.getElementById('productModal');<br>
+const modalClose = document.querySelector('.modal-close');<br>
+<br>
+// Дані про товари<br>
+const productsData = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'pink dress.jpg': {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title: 'Рожеві сукні',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;price: '50$',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description: 'Рожеві сукні для літнього сезону...',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: ['#FF69B4', '#FFB6C1', '#FFC0CB']<br>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// ... інші товари<br>
+};<br>
+<br>
+// Функція для відкриття модального вікна<br>
+function openModal(productCard) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const productImage = productCard.querySelector('.product-image');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const productTitle = productCard.querySelector('.product-title');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// ... заповнення модального вікна даними<br>
+&nbsp;&nbsp;&nbsp;&nbsp;modal.classList.add('active');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;document.body.style.overflow = 'hidden';<br>
+}<br>
+<br>
+// Делегування подій на product-grid<br>
+if (productGrid) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;productGrid.addEventListener('click', function(event) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const productCard = event.target.closest('.product-card');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (productCard) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!event.target.classList.contains('btn-add-cart')) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;openModal(productCard);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+}
+                </code>
+            </div>
+
+            <h3>4.4. Пояснення ключових концепцій</h3>
+            <div class="highlight-box">
+                <h4>Делегування подій (Event Delegation):</h4>
+                <ul>
+                    <li><strong>Концепція:</strong> Замість додавання обробника подій до кожного елемента окремо, ми додаємо один обробник до батьківського елемента (контейнера). Події від дочірніх елементів "спливають" (bubble up) до батьківського елемента.</li>
+                    <li><strong>Переваги:</strong>
+                        <ul>
+                            <li>Менше обробників подій в пам'яті</li>
+                            <li>Працює з динамічно доданими елементами</li>
+                            <li>Кращі показники продуктивності</li>
+                            <li>Спрощений код</li>
+                        </ul>
+                    </li>
+                    <li><strong>Реалізація:</strong> Використовуємо <code>event.target.closest('.product-card')</code> для визначення, на яку картку товару було клікнуто.</li>
+                </ul>
+
+                <h4>Модальне вікно (Modal Window):</h4>
+                <ul>
+                    <li><strong>Призначення:</strong> Вспливаюче вікно, яке відображається поверх основного контенту для показу додаткової інформації або взаємодії з користувачем.</li>
+                    <li><strong>Реалізація:</strong>
+                        <ul>
+                            <li>Використання <code>position: fixed</code> для позиціонування вікна</li>
+                            <li>Напівпрозорий фон (backdrop) для акценту на модальному вікні</li>
+                            <li>Блокування прокрутки основного контенту через <code>document.body.style.overflow = 'hidden'</code></li>
+                            <li>Анімації для плавного появи/зникнення</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Методи та властивості, що використовуються:</h4>
+                <ul>
+                    <li><strong>querySelector()</strong> - вибір першого елемента за селектором</li>
+                    <li><strong>getElementById()</strong> - отримання елемента за ID</li>
+                    <li><strong>addEventListener()</strong> - додавання обробника подій</li>
+                    <li><strong>event.target</strong> - елемент, на який було клікнуто</li>
+                    <li><strong>closest()</strong> - пошук найближчого батьківського елемента за селектором</li>
+                    <li><strong>classList.add/remove</strong> - додавання/видалення CSS-класів</li>
+                    <li><strong>querySelector()</strong> всередині елемента - пошук дочірніх елементів</li>
+                    <li><strong>createElement()</strong> - створення нового DOM-елемента</li>
+                    <li><strong>appendChild()</strong> - додавання дочірнього елемента</li>
+                    <li><strong>innerHTML</strong> - встановлення/отримання HTML-вмісту</li>
+                    <li><strong>textContent</strong> - встановлення/отримання текстового вмісту</li>
+                    <li><strong>getAttribute()</strong> - отримання значення атрибута</li>
+                    <li><strong>split()</strong> - розділення рядка на масив</li>
+                    <li><strong>pop()</strong> - отримання останнього елемента масиву</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>5. ДЕТАЛЬНИЙ РОЗБІР КОДУ ЗАВДАННЯ №1</h2>
+
+            <h3>5.1. Функція openModal()</h3>
+            <div class="code-block">
+                <code>
+function openModal(productCard) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Отримуємо посилання на елементи картки товару<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const productImage = productCard.querySelector('.product-image');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const productTitle = productCard.querySelector('.product-title');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const productPrice = productCard.querySelector('.product-price');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const productDescription = productCard.querySelector('.product-description');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const colorOptions = productCard.querySelectorAll('.color-dot');<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Отримуємо шлях до зображення та визначаємо ключ товару<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const imgSrc = productImage.getAttribute('src');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const productKey = getProductKey(imgSrc);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const productData = productsData[productKey];<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Заповнюємо модальне вікно даними<br>
+&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById('modalImage').src = imgSrc;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById('modalImage').alt = productTitle.textContent;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (productData) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Використовуємо розширені дані з об'єкта productsData<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById('modalTitle').textContent = productData.title;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById('modalPrice').textContent = productData.price;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById('modalDescription').textContent = productData.description;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Створюємо елементи для кольорів<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const modalColors = document.getElementById('modalColors');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modalColors.innerHTML = '';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;productData.colors.forEach(color => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const colorDot = document.createElement('div');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colorDot.className = 'color-dot';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colorDot.style.backgroundColor = color;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (color === '#FFFFFF') {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colorDot.style.border = '2px solid #ddd';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modalColors.appendChild(colorDot);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Використовуємо дані з HTML, якщо немає розширених даних<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById('modalTitle').textContent = productTitle.textContent;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById('modalPrice').textContent = productPrice.textContent;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById('modalDescription').textContent = productDescription.textContent;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const modalColors = document.getElementById('modalColors');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modalColors.innerHTML = '';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colorOptions.forEach(colorDot => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const newColorDot = colorDot.cloneNode(true);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newColorDot.style.width = '32px';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newColorDot.style.height = '32px';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modalColors.appendChild(newColorDot);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Показуємо модальне вікно та блокуємо прокрутку<br>
+&nbsp;&nbsp;&nbsp;&nbsp;modal.classList.add('active');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;document.body.style.overflow = 'hidden';<br>
+}
+                </code>
+            </div>
+
+            <h3>5.2. Реалізація делегування подій</h3>
+            <div class="code-block">
+                <code>
+// Делегування подій на product-grid<br>
+if (productGrid) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;productGrid.addEventListener('click', function(event) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// event.target - елемент, на який було клікнуто<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// closest() шукає найближчий батьківський елемент з класом .product-card<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const productCard = event.target.closest('.product-card');<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (productCard) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Перевіряємо, що клік не був на кнопці "Додати до кошика"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!event.target.classList.contains('btn-add-cart')) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;openModal(productCard);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+}
+                </code>
+            </div>
+            <p><strong>Як це працює:</strong></p>
+            <ol>
+                <li>Обробник подій додається тільки до одного елемента - <code>productGrid</code></li>
+                <li>Коли користувач клікає на будь-який елемент всередині <code>productGrid</code>, подія "спливає" до батьківського елемента</li>
+                <li>За допомогою <code>event.target.closest('.product-card')</code> визначаємо, на яку картку товару було клікнуто</li>
+                <li>Якщо знайдено картку товару і клік не був на кнопці "Додати до кошика", відкриваємо модальне вікно</li>
+            </ol>
+
+            <h3>5.3. Функція закриття модального вікна</h3>
+            <div class="code-block">
+                <code>
+function closeModal() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;modal.classList.remove('active');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;document.body.style.overflow = ''; // Відновити прокрутку<br>
+}<br>
+<br>
+// Закриття при кліку на хрестик<br>
+modalClose.addEventListener('click', closeModal);<br>
+<br>
+// Закриття при кліку поза модальним вікном<br>
+modal.addEventListener('click', function(event) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (event.target === modal) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closeModal();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+});<br>
+<br>
+// Закриття при натисканні Escape<br>
+document.addEventListener('keydown', function(event) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (event.key === 'Escape' && modal.classList.contains('active')) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closeModal();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+});
+                </code>
+            </div>
+        </section>
+
+        <section>
+            <h2>6. ПЕРЕВАГИ ВИКОРИСТАННЯ ДЕЛЕГУВАННЯ ПОДІЙ</h2>
+            <div class="highlight-box">
+                <h4>1. Ефективність пам'яті:</h4>
+                <p>Замість N обробників подій (де N - кількість товарів), ми маємо лише один обробник. Це особливо важливо при великій кількості елементів.</p>
+
+                <h4>2. Робота з динамічним контентом:</h4>
+                <p>Якщо товари додаються на сторінку динамічно (через AJAX, через JavaScript), делегування подій продовжує працювати без додаткових налаштувань.</p>
+
+                <h4>3. Спрощений код:</h4>
+                <p>Не потрібно додавати обробники до кожного елемента окремо в циклі. Код стає чистішим та легшим для підтримки.</p>
+
+                <h4>4. Краща продуктивність:</h4>
+                <p>Менша кількість обробників подій означає менше витрат ресурсів браузера на їх управління.</p>
+
+                <h4>5. Гнучкість:</h4>
+                <p>Легко додавати або видаляти елементи з колекції - обробник подій автоматично працює з новими елементами.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>7. АДАПТИВНІСТЬ ТА UX</h2>
+            <h3>7.1. Адаптивний дизайн</h3>
+            <p>Модальне вікно адаптується до різних розмірів екранів:</p>
+            <ul>
+                <li><strong>Мобільні пристрої (&lt; 768px):</strong> Вертикальне розташування зображення та інформації</li>
+                <li><strong>Планшети та десктопи (&gt;= 769px):</strong> Горизонтальне розташування зображення та тексту</li>
+            </ul>
+
+            <h3>7.2. Покращення користувацького досвіду</h3>
+            <ul>
+                <li>Плавні анімації появи/зникнення модального вікна</li>
+                <li>Блокування прокрутки основного контенту при відкритому модальному вікні</li>
+                <li>Кілька способів закриття (хрестик, клік поза вікном, клавіша Escape)</li>
+                <li>Візуальний фокус на модальному вікні завдяки напівпрозорому фону</li>
+                <li>Можливість прокрутки вмісту модального вікна при великому обсязі інформації</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>8. СКРІНШОТИ РЕЗУЛЬТАТІВ</h2>
+            <h3>8.1. Завдання 2: Показ/приховування пароля</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <div class="screenshot-placeholder">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот інтерфейсу показу/приховування пароля]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл lab6/index.html у браузері</li>
+                        <li>Зробіть скріншот поля введення з кнопкою</li>
+                        <li>Можна зробити два скріншоти: з видимим текстом та з прихованим (зірочками)</li>
+                        <li>Збережіть як images/lab6_task2_password.png</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h3>8.2. Завдання 1: Модальне вікно на десктопі</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <div class="screenshot-placeholder">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот модального вікна на десктопі]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл index.html у браузері</li>
+                        <li>Клікніть на будь-яку картку товару</li>
+                        <li>Зробіть скріншот відкритого модального вікна</li>
+                        <li>Збережіть як images/lab6_modal_desktop.png</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h3>8.3. Модальне вікно на мобільному пристрої</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <div class="screenshot-placeholder">
+                    <p style="color: #666; font-style: italic;">[Тут має бути скріншот модального вікна на мобільному]</p>
+                    <p style="color: #999; font-size: 0.9rem; margin-top: 1rem;">Для отримання скріншота:</p>
+                    <ol style="text-align: left; display: inline-block; color: #666;">
+                        <li>Відкрийте файл index.html у браузері з інструментами розробника</li>
+                        <li>Увімкніть режим емуляції мобільних пристроїв</li>
+                        <li>Клікніть на картку товару</li>
+                        <li>Зробіть скріншот модального вікна</li>
+                        <li>Збережіть як images/lab6_modal_mobile.png</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>9. ВИСНОВКИ</h2>
+            <p>
+                Під час виконання лабораторної роботи №6 було успішно реалізовано два завдання:
+            </p>
+            <ul>
+                <li><strong>Завдання 2:</strong> Створено інтерактивний інтерфейс для показу/приховування пароля з використанням JavaScript та маніпуляцій DOM</li>
+                <li><strong>Завдання 1:</strong> Реалізовано техніку делегування подій для обробки кліків на колекції товарів та створено функціональне модальне вікно для відображення детальної інформації про товари</li>
+            </ul>
+            <p>
+                Завдання 2 продемонструвало роботу з обробниками подій, маніпуляціями типами полів введення та динамічною зміною контенту кнопок. 
+                Завдання 1 продемонструвало ефективне використання делегування подій та створення складних інтерактивних компонентів.
+            </p>
+            <div class="highlight-box">
+                <h4>Основні досягнення:</h4>
+                <h5>Завдання 2 (Показ/приховування пароля):</h5>
+                <ol>
+                    <li>Опановано роботу з типами полів введення (input type="text" та type="password")</li>
+                    <li>Реалізовано перемикання між видимим та прихованим текстом пароля</li>
+                    <li>Опановано динамічну зміну тексту кнопки залежно від стану поля</li>
+                    <li>Використано метод <code>textContent</code> для зміни тексту елемента</li>
+                    <li>Реалізовано обробку події <code>click</code> для кнопки</li>
+                    <li>Створено функцію <code>updateToggleState()</code> для синхронізації стану інтерфейсу</li>
+                    <li>Опановано використання <code>DOMContentLoaded</code> для безпечного доступу до DOM-елементів</li>
+                </ol>
+                <h5>Завдання 1 (Делегування подій та модальне вікно):</h5>
+                <ol>
+                    <li>Опановано техніку делегування подій (event delegation) для ефективної обробки подій на колекціях елементів</li>
+                    <li>Реалізовано модальне вікно з повним функціоналом відображення інформації про товари</li>
+                    <li>Використано метод <code>closest()</code> для визначення цільового елемента при делегуванні подій</li>
+                    <li>Опановано роботу з <code>event.target</code> для ідентифікації елемента, на який було клікнуто</li>
+                    <li>Реалізовано динамічне заповнення модального вікна даними з HTML та JavaScript-об'єктів</li>
+                    <li>Додано кілька способів закриття модального вікна (хрестик, клік поза вікном, клавіша Escape)</li>
+                    <li>Створено CSS-анімації для плавного відкриття/закриття модального вікна</li>
+                    <li>Реалізовано блокування прокрутки основного контенту при відкритому модальному вікні</li>
+                    <li>Опановано створення DOM-елементів динамічно через <code>createElement()</code> та <code>appendChild()</code></li>
+                    <li>Використано метод <code>cloneNode()</code> для копіювання елементів</li>
+                    <li>Реалізовано адаптивний дизайн модального вікна для різних розмірів екранів</li>
+                    <li>Опановано роботу з об'єктами для зберігання структурованих даних про товари</li>
+                    <li>Використано метод <code>forEach()</code> для ітерації по масивах та обробки кольорів</li>
+                    <li>Реалізовано обробку подій клавіатури через <code>keydown</code> для закриття вікна по Escape</li>
+                    <li>Опановано використання <code>classList</code> для динамічного управління CSS-класами</li>
+                    <li>Реалізовано перевірку наявності елементів перед додаванням обробників подій</li>
+                    <li>Опановано роботу з атрибутами елементів через <code>getAttribute()</code> та пряме встановлення властивостей</li>
+                    <li>Використано методи роботи з рядками (<code>split()</code>, <code>pop()</code>) для обробки шляхів до файлів</li>
+                    <li>Реалізовано структуру коду, яка легко розширюється для додавання нових товарів</li>
+                    <li>Опановано принципи створення доступного (accessible) інтерфейсу з коректною семантикою HTML</li>
+                </ol>
+            </div>
+            <p>
+                Отримані знання та навички дозволяють створювати інтерактивні веб-інтерфейси з ефективною обробкою подій, 
+                модальними вікнами та динамічним контентом. Розуміння принципів делегування подій є критично важливим для 
+                створення продуктивних та масштабованих веб-застосунків. Ця техніка широко використовується у сучасних 
+                JavaScript-фреймворках та бібліотеках, тому отриманий досвід є фундаментальним для подальшого розвитку 
+                навичок веб-розробки.
+            </p>
+            <p>
+                Техніка делегування подій особливо корисна при роботі з великими списками елементів, динамічним контентом, 
+                який завантажується через AJAX, або інтерактивними таблицями. Модальні вікна є стандартним компонентом 
+                сучасних веб-інтерфейсів і використовуються для показу додаткової інформації, підтвердження дій, форм 
+                реєстрації та багатьох інших сценаріїв взаємодії з користувачем.
+            </p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="../index.html" class="back-link">Повернутися на головну сторінку</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 WEB-застосунок. Всі права захищені.</p>
+    </footer>
+</body>
+</html>
+
